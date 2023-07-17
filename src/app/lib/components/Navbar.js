@@ -12,18 +12,18 @@ const Navbar = () => {
         <div className=" text-black bg-white border-b">
             <Wrapper className="flex items-center justify-between h-20">
                 <h1 className="text-3xl lg:text-4xl font-black">Logo Here.</h1>
-                <div className="hidden lg:flex gap-x-5">
+                <div className="hidden md:flex gap-x-5">
                     {menus.map((menu, index) => (
                         <Link
                             href={menu.path}
-                            className="hover:text-yellow-400 font-medium text-xl"
+                            className="hover:underline duration-300 font-medium text-xl"
                             key={index}
                         >
                             {menu.route}
                         </Link>
                     ))}
                 </div>
-                <div className="lg:hidden">
+                <div className="md:hidden">
                     {showMenu ? (
                         <RxCross2
                             onClick={() => setShowMenu(false)}
@@ -37,20 +37,20 @@ const Navbar = () => {
                     )}
                 </div>
                 <div
-                    className={`lg:hidden text-center md:pb-0 pb-12 absolute md:static bg-white text-black h-[calc(100vh - 5rem)] w-full md:z-auto left-0 md:w-auto transition-all duration-500 ease-in ${
+                    className={`md:hidden text-center md:pb-0 pb-40 absolute bg-white text-black h-[calc(100vh - 5rem)] w-full left-0 transition-all duration-500 ease-in ${
                         showMenu ? "top-40" : "top-[-490px]"
                     } ${
                         showMenu &&
                         "h-screen flex items-center justify-center mt-[-5rem]"
                     }`}
                 >
-                    <div className="md:flex md:items-center space-y-7 mt-[-5rem] md:space-y-0 md:space-x-5">
+                    <div className="">
                         {menus.map((menu, index) => (
                             <p key={index} className="text-xl md:my-0 my-7">
                                 <Link
                                     href={menu.path}
                                     onClick={() => setShowMenu(false)}
-                                    className="hover:text-yellow-400 font-medium duration-500"
+                                    className="hover:underline font-medium duration-300"
                                 >
                                     {menu.route}
                                 </Link>
