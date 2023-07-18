@@ -1,16 +1,10 @@
-import Image from "next/image";
 import React from "react";
-import Button from "./button";
-import { BsFillCartCheckFill } from "react-icons/bs";
+import Image from "next/image";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiTwotoneStar } from "react-icons/ai";
-import { AiOutlineHeart } from "react-icons/ai";
-import { AiFillHeart } from "react-icons/ai";
 import Rating from "react-rating";
-import { useState } from "react";
 
-const Card = ({ image, title, price, rating }) => {
-    const [wishlist, setWishlist] = useState(false);
+const SmallCard = ({ image, title, price, rating }) => {
     return (
         <div className="shadow-xl group rounded-md duration-300 border cursor-pointer">
             <div>
@@ -22,22 +16,9 @@ const Card = ({ image, title, price, rating }) => {
                         alt=""
                         className="p-10 group-hover:scale-110 duration-300 object-cover"
                     />
-                    <p className="absolute right-6 top-6 rounded-l-md">
-                        {wishlist ? (
-                            <AiFillHeart
-                                onClick={() => setWishlist(false)}
-                                className="text-4xl text-red-600"
-                            />
-                        ) : (
-                            <AiOutlineHeart
-                                onClick={() => setWishlist(true)}
-                                className="text-4xl"
-                            />
-                        )}
-                    </p>
                 </div>
-                <div>
-                    <div className="px-7 py-3">
+                <div className="bg-[#F5F5F5]">
+                    <div className="px-7 py-6">
                         <h2 className="lg:text-2xl text-lg text-center font-medium hover:underline">
                             {title?.slice(0, 20)}...
                         </h2>
@@ -59,22 +40,10 @@ const Card = ({ image, title, price, rating }) => {
                             $ {price}
                         </h3>
                     </div>
-                    <Button
-                        bgColor={"bg-black"}
-                        textColor={"text-white"}
-                        className={
-                            "w-full flex justify-center items-center gap-x-2 rounded-t-none"
-                        }
-                    >
-                        <span>
-                            <BsFillCartCheckFill className="text-2xl" />
-                        </span>
-                        Add to cart
-                    </Button>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Card;
+export default SmallCard;

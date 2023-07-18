@@ -1,5 +1,5 @@
 export const menus = [
     { route: "Home", path: "/" },
-    { route: "Product", path: "/product" },
-    { route: "Contact", path: "/contact" },
+    { route: "Products", path: "/products" },
+    { route: "Dashboard", path: "/dashboard" },
 ];

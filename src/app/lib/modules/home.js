@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Button from "../components/button";
-import Card from "../components/card";
 import Wrapper from "../components/Wrapper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
@@ -10,6 +9,7 @@ import "swiper/css/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { getElectronics, getJewelry, getMenCloth, getWomenCloth } from "../api";
 import Title from "../components/title";
+import SmallCard from "../components/samllCard";
 
 const Home = () => {
     const { data: menCloths } = useQuery({
@@ -50,7 +50,7 @@ const Home = () => {
 
             <Wrapper className={"space-y-14"}>
                 <div>
-                    <Title title={"Men's clothing"} />
+                    <Title border={false} title={"Men's clothing"} />
                     <div>
                         <Swiper
                             navigation={true}
@@ -81,8 +81,10 @@ const Home = () => {
                         >
                             {menCloths?.map((cloth) => (
                                 <SwiperSlide key={cloth.id}>
-                                    <Card
+                                    <SmallCard
+                                        rating={cloth?.rating}
                                         title={cloth?.title}
+                                        price={cloth?.price}
                                         image={cloth?.image}
                                     />
                                 </SwiperSlide>
@@ -92,7 +94,7 @@ const Home = () => {
                 </div>
 
                 <div>
-                    <Title title={"Women's clothing"} />
+                    <Title border={false} title={"Women's clothing"} />
                     <div>
                         <Swiper
                             navigation={true}
@@ -123,8 +125,10 @@ const Home = () => {
                         >
                             {womenCloths?.map((cloth) => (
                                 <SwiperSlide key={cloth.id}>
-                                    <Card
+                                    <SmallCard
+                                        rating={cloth?.rating}
                                         title={cloth?.title}
+                                        price={cloth?.price}
                                         image={cloth?.image}
                                     />
                                 </SwiperSlide>
@@ -134,7 +138,7 @@ const Home = () => {
                 </div>
 
                 <div>
-                    <Title title={"jewelry"} />
+                    <Title border={false} title={"jewelry"} />
                     <div>
                         <Swiper
                             navigation={true}
@@ -165,8 +169,10 @@ const Home = () => {
                         >
                             {jewelry?.map((item) => (
                                 <SwiperSlide key={item.id}>
-                                    <Card
+                                    <SmallCard
+                                        rating={item?.rating}
                                         title={item?.title}
+                                        price={item?.price}
                                         image={item?.image}
                                     />
                                 </SwiperSlide>
@@ -176,7 +182,7 @@ const Home = () => {
                 </div>
 
                 <div>
-                    <Title title={"electronics"} />
+                    <Title border={false} title={"electronics"} />
                     <div>
                         <Swiper
                             navigation={true}
@@ -207,8 +213,10 @@ const Home = () => {
                         >
                             {electronics?.map((item) => (
                                 <SwiperSlide key={item.id}>
-                                    <Card
+                                    <SmallCard
+                                        rating={item?.rating}
                                         title={item?.title}
+                                        price={item?.price}
                                         image={item?.image}
                                     />
                                 </SwiperSlide>
