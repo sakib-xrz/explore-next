@@ -9,22 +9,24 @@ import "swiper/css/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { getElectronics, getJewelry, getMenCloth, getWomenCloth } from "../api";
 import Title from "../components/title";
-import SmallCard from "../components/samllCard";
+import Loader from "../components/loader";
+import Link from "next/link";
+import Card from "../components/card";
 
 const Home = () => {
-    const { data: menCloths } = useQuery({
+    const { data: menCloths, isLoading: menClothsLoading } = useQuery({
         queryKey: ["home/menCloths"],
         queryFn: getMenCloth,
     });
-    const { data: womenCloths } = useQuery({
+    const { data: womenCloths, isLoading: womenClothsLoading } = useQuery({
         queryKey: ["home/womenCloths"],
         queryFn: getWomenCloth,
     });
-    const { data: jewelry } = useQuery({
+    const { data: jewelry, isLoading: jewelryLoading } = useQuery({
         queryKey: ["home/jewelry"],
         queryFn: getJewelry,
     });
-    const { data: electronics } = useQuery({
+    const { data: electronics, isLoading: electronicsLoading } = useQuery({
         queryKey: ["home/electronics"],
         queryFn: getElectronics,
     });
@@ -37,12 +39,8 @@ const Home = () => {
                         Welcome to Our <br /> Online Store
                     </h1>
                     <div className="flex justify-center">
-                        <Button
-                            className={
-                                "lg:text-2xl hover:bg-black hover:text-white"
-                            }
-                        >
-                            See all products
+                        <Button className={"lg:text-2xl"}>
+                            <Link href={"/products"}>See all products</Link>
                         </Button>
                     </div>
                 </div>
@@ -50,163 +48,215 @@ const Home = () => {
 
             <Wrapper className={"space-y-14"}>
                 <div>
-                    <Title border={false} title={"Men's clothing"} />
-                    <div>
-                        <Swiper
-                            navigation={true}
-                            modules={[Navigation]}
-                            className="mySwiper"
-                            breakpoints={{
-                                320: {
-                                    slidesPerView: 1,
-                                    spaceBetween: 20,
-                                },
-                                540: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 20,
-                                },
-                                768: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 40,
-                                },
-                                1024: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 50,
-                                },
-                            }}
+                    <div className="flex justify-between items-center">
+                        <Title border={false} title={"Women's clothing"} />
+                        <Button
+                            bgColor={"bg-black"}
+                            textColor={"text-white"}
+                            className={"px-2 py-1 capitalize"}
                         >
-                            {menCloths?.map((cloth) => (
-                                <SwiperSlide key={cloth.id}>
-                                    <SmallCard
-                                        rating={cloth?.rating}
-                                        title={cloth?.title}
-                                        price={cloth?.price}
-                                        image={cloth?.image}
-                                    />
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
+                            <Link href={"/products/womans"}>See All</Link>
+                        </Button>
                     </div>
+                    {womenClothsLoading ? (
+                        <Loader />
+                    ) : (
+                        <div>
+                            <Swiper
+                                navigation={true}
+                                modules={[Navigation]}
+                                className="mySwiper"
+                                breakpoints={{
+                                    320: {
+                                        slidesPerView: 1,
+                                        spaceBetween: 20,
+                                    },
+                                    540: {
+                                        slidesPerView: 2,
+                                        spaceBetween: 20,
+                                    },
+                                    768: {
+                                        slidesPerView: 2,
+                                        spaceBetween: 40,
+                                    },
+                                    1024: {
+                                        slidesPerView: 3,
+                                        spaceBetween: 50,
+                                    },
+                                }}
+                            >
+                                {womenCloths?.map((cloth) => (
+                                    <SwiperSlide key={cloth.id}>
+                                        <Card
+                                            rating={cloth?.rating}
+                                            title={cloth?.title}
+                                            price={cloth?.price}
+                                            image={cloth?.image}
+                                        />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </div>
+                    )}
                 </div>
 
                 <div>
-                    <Title border={false} title={"Women's clothing"} />
-                    <div>
-                        <Swiper
-                            navigation={true}
-                            modules={[Navigation]}
-                            className="mySwiper"
-                            breakpoints={{
-                                320: {
-                                    slidesPerView: 1,
-                                    spaceBetween: 20,
-                                },
-                                540: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 20,
-                                },
-                                768: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 40,
-                                },
-                                1024: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 50,
-                                },
-                            }}
+                    <div className="flex justify-between items-center">
+                        <Title border={false} title={"Men's clothing"} />
+                        <Button
+                            bgColor={"bg-black"}
+                            textColor={"text-white"}
+                            className={"px-2 py-1 capitalize"}
                         >
-                            {womenCloths?.map((cloth) => (
-                                <SwiperSlide key={cloth.id}>
-                                    <SmallCard
-                                        rating={cloth?.rating}
-                                        title={cloth?.title}
-                                        price={cloth?.price}
-                                        image={cloth?.image}
-                                    />
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
+                            <Link href={"/products/mens"}>See All</Link>
+                        </Button>
                     </div>
+                    {menClothsLoading ? (
+                        <Loader />
+                    ) : (
+                        <div>
+                            <Swiper
+                                navigation={true}
+                                modules={[Navigation]}
+                                className="mySwiper"
+                                breakpoints={{
+                                    320: {
+                                        slidesPerView: 1,
+                                        spaceBetween: 20,
+                                    },
+                                    540: {
+                                        slidesPerView: 2,
+                                        spaceBetween: 20,
+                                    },
+                                    768: {
+                                        slidesPerView: 2,
+                                        spaceBetween: 40,
+                                    },
+                                    1024: {
+                                        slidesPerView: 3,
+                                        spaceBetween: 50,
+                                    },
+                                }}
+                            >
+                                {menCloths?.map((cloth) => (
+                                    <SwiperSlide key={cloth.id}>
+                                        <Card
+                                            rating={cloth?.rating}
+                                            title={cloth?.title}
+                                            price={cloth?.price}
+                                            image={cloth?.image}
+                                        />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </div>
+                    )}
                 </div>
 
                 <div>
-                    <Title border={false} title={"jewelry"} />
-                    <div>
-                        <Swiper
-                            navigation={true}
-                            modules={[Navigation]}
-                            className="mySwiper"
-                            breakpoints={{
-                                320: {
-                                    slidesPerView: 1,
-                                    spaceBetween: 20,
-                                },
-                                540: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 20,
-                                },
-                                768: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 40,
-                                },
-                                1024: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 50,
-                                },
-                            }}
+                    <div className="flex justify-between items-center">
+                        <Title border={false} title={"jewelry"} />
+                        <Button
+                            bgColor={"bg-black"}
+                            textColor={"text-white"}
+                            className={"px-2 py-1 capitalize"}
                         >
-                            {jewelry?.map((item) => (
-                                <SwiperSlide key={item.id}>
-                                    <SmallCard
-                                        rating={item?.rating}
-                                        title={item?.title}
-                                        price={item?.price}
-                                        image={item?.image}
-                                    />
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
+                            <Link href={"/products/jewelry"}>See All</Link>
+                        </Button>
                     </div>
+                    {jewelryLoading ? (
+                        <Loader />
+                    ) : (
+                        <div>
+                            <Swiper
+                                navigation={true}
+                                modules={[Navigation]}
+                                className="mySwiper"
+                                breakpoints={{
+                                    320: {
+                                        slidesPerView: 1,
+                                        spaceBetween: 20,
+                                    },
+                                    540: {
+                                        slidesPerView: 2,
+                                        spaceBetween: 20,
+                                    },
+                                    768: {
+                                        slidesPerView: 2,
+                                        spaceBetween: 40,
+                                    },
+                                    1024: {
+                                        slidesPerView: 3,
+                                        spaceBetween: 50,
+                                    },
+                                }}
+                            >
+                                {jewelry?.map((item) => (
+                                    <SwiperSlide key={item.id}>
+                                        <Card
+                                            rating={item?.rating}
+                                            title={item?.title}
+                                            price={item?.price}
+                                            image={item?.image}
+                                        />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </div>
+                    )}
                 </div>
 
                 <div>
-                    <Title border={false} title={"electronics"} />
-                    <div>
-                        <Swiper
-                            navigation={true}
-                            modules={[Navigation]}
-                            className="mySwiper"
-                            breakpoints={{
-                                320: {
-                                    slidesPerView: 1,
-                                    spaceBetween: 20,
-                                },
-                                540: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 20,
-                                },
-                                768: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 40,
-                                },
-                                1024: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 50,
-                                },
-                            }}
+                    <div className="flex justify-between items-center">
+                        <Title border={false} title={"electronics"} />
+                        <Button
+                            bgColor={"bg-black"}
+                            textColor={"text-white"}
+                            className={"px-2 py-1 capitalize"}
                         >
-                            {electronics?.map((item) => (
-                                <SwiperSlide key={item.id}>
-                                    <SmallCard
-                                        rating={item?.rating}
-                                        title={item?.title}
-                                        price={item?.price}
-                                        image={item?.image}
-                                    />
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
+                            <Link href={"/products/electronics"}>See All</Link>
+                        </Button>
                     </div>
+                    {electronicsLoading ? (
+                        <Loader />
+                    ) : (
+                        <div>
+                            <Swiper
+                                navigation={true}
+                                modules={[Navigation]}
+                                className="mySwiper"
+                                breakpoints={{
+                                    320: {
+                                        slidesPerView: 1,
+                                        spaceBetween: 20,
+                                    },
+                                    540: {
+                                        slidesPerView: 2,
+                                        spaceBetween: 20,
+                                    },
+                                    768: {
+                                        slidesPerView: 2,
+                                        spaceBetween: 40,
+                                    },
+                                    1024: {
+                                        slidesPerView: 3,
+                                        spaceBetween: 50,
+                                    },
+                                }}
+                            >
+                                {electronics?.map((item) => (
+                                    <SwiperSlide key={item.id}>
+                                        <Card
+                                            rating={item?.rating}
+                                            title={item?.title}
+                                            price={item?.price}
+                                            image={item?.image}
+                                        />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </div>
+                    )}
                 </div>
             </Wrapper>
 

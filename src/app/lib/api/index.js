@@ -45,4 +45,3 @@ export async function getAllProducts() {
     }
     return response.json();
 }
-

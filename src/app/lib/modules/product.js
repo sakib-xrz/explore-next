@@ -5,11 +5,12 @@ import Wrapper from "../components/Wrapper";
 import Title from "../components/title";
 import Card from "../components/card";
 import { useQuery } from "@tanstack/react-query";
+import Loader from "../components/loader";
 
 const Product = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [products, setProducts] = useState([]);
-    const { data: allProducts } = useQuery({
+    const { data: allProducts, isLoading } = useQuery({
         queryKey: ["product/getAllProduct"],
         queryFn: getAllProducts,
     });
@@ -52,7 +53,7 @@ const Product = () => {
                             <input
                                 type="search"
                                 name="search"
-                                className="py-4 text-xl text-black rounded-md pl-10 pr-3 focus:outline-none focus:bg-white border w-full md:w-96"
+                                className="py-4 text-xl text-black rounded-sm pl-10 pr-3 focus:outline-none focus:bg-white border w-full md:w-96"
                                 placeholder="Search..."
                                 autoComplete="off"
                                 value={searchQuery}
@@ -62,17 +63,21 @@ const Product = () => {
                     </form>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    {products?.map((item) => (
-                        <Card
-                            key={item.id}
-                            rating={item.rating}
-                            title={item.title}
-                            image={item.image}
-                            price={item.price}
-                        />
-                    ))}
-                </div>
+                {isLoading ? (
+                    <Loader />
+                ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        {products?.map((item) => (
+                            <Card
+                                key={item.id}
+                                rating={item.rating}
+                                title={item.title}
+                                image={item.image}
+                                price={item.price}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
         </Wrapper>
     );

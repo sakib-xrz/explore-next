@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import Button from "./button";
@@ -12,7 +13,7 @@ import { useState } from "react";
 const Card = ({ image, title, price, rating }) => {
     const [wishlist, setWishlist] = useState(false);
     return (
-        <div className="shadow-xl group rounded-md duration-300 border cursor-pointer">
+        <div className="shadow-xl group rounded-sm duration-300 border cursor-pointer">
             <div>
                 <div className="flex justify-center h-[25rem] relative">
                     <Image
@@ -38,7 +39,7 @@ const Card = ({ image, title, price, rating }) => {
                 </div>
                 <div>
                     <div className="px-7 py-3">
-                        <h2 className="lg:text-2xl text-lg text-center font-medium hover:underline">
+                        <h2 className="lg:text-xl text-lg text-center font-medium hover:underline">
                             {title?.slice(0, 20)}...
                         </h2>
                         <div className="flex justify-center items-start gap-x-1 mt-2">
