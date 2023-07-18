@@ -4,19 +4,33 @@ import Button from "../components/button";
 import Card from "../components/card";
 import Wrapper from "../components/Wrapper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { useQuery } from "react-query";
-import { getMensCloth } from "../api";
+import { useQuery } from "@tanstack/react-query";
+import { getElectronics, getJewelry, getMenCloth, getWomenCloth } from "../api";
+import Title from "../components/title";
 
 const Home = () => {
-    const { data: mensCloth, isLoading } = useQuery("myData", getMensCloth);
-    console.log(mensCloth);
-    console.log(isLoading);
+    const { data: menCloths } = useQuery({
+        queryKey: ["home/menCloths"],
+        queryFn: getMenCloth,
+    });
+    const { data: womenCloths } = useQuery({
+        queryKey: ["home/womenCloths"],
+        queryFn: getWomenCloth,
+    });
+    const { data: jewelry } = useQuery({
+        queryKey: ["home/jewelry"],
+        queryFn: getJewelry,
+    });
+    const { data: electronics } = useQuery({
+        queryKey: ["home/electronics"],
+        queryFn: getElectronics,
+    });
 
     return (
-        <div className="space-y-10">
+        <div className="space-y-14">
             <div className="bg-image bg-right-bottom md:bg-left flex justify-center items-center text-white">
                 <div className="space-y-6 lg:space-y-10">
                     <h1 className="lg:text-8xl text-4xl font-bold text-center">
@@ -33,40 +47,174 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <Wrapper>
+
+            <Wrapper className={"space-y-14"}>
                 <div>
-                    <Swiper
-                        navigation={true}
-                        modules={[Navigation]}
-                        className="mySwiper"
-                        breakpoints={{
-                            320: {
-                                slidesPerView: 1,
-                                spaceBetween: 20,
-                            },
-                            540: {
-                                slidesPerView: 2,
-                                spaceBetween: 20,
-                            },
-                            768: {
-                                slidesPerView: 2,
-                                spaceBetween: 40,
-                            },
-                            1024: {
-                                slidesPerView: 3,
-                                spaceBetween: 50,
-                            },
-                        }}
-                    >
-                        {mensCloth?.map((cloth) => (
-                            <SwiperSlide key={cloth.id}>
-                                <Card
-                                    title={cloth?.title}
-                                    image={cloth?.image}
-                                />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                    <Title title={"Men's clothing"} />
+                    <div>
+                        <Swiper
+                            navigation={true}
+                            autoplay={{
+                                delay: 2500,
+                                disableOnInteraction: false,
+                            }}
+                            modules={[Navigation, Autoplay]}
+                            className="mySwiper"
+                            breakpoints={{
+                                320: {
+                                    slidesPerView: 1,
+                                    spaceBetween: 20,
+                                },
+                                540: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 20,
+                                },
+                                768: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 40,
+                                },
+                                1024: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 50,
+                                },
+                            }}
+                        >
+                            {menCloths?.map((cloth) => (
+                                <SwiperSlide key={cloth.id}>
+                                    <Card
+                                        title={cloth?.title}
+                                        image={cloth?.image}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+                </div>
+
+                <div>
+                    <Title title={"Women's clothing"} />
+                    <div>
+                        <Swiper
+                            navigation={true}
+                            autoplay={{
+                                delay: 2500,
+                                disableOnInteraction: false,
+                            }}
+                            modules={[Navigation, Autoplay]}
+                            className="mySwiper"
+                            breakpoints={{
+                                320: {
+                                    slidesPerView: 1,
+                                    spaceBetween: 20,
+                                },
+                                540: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 20,
+                                },
+                                768: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 40,
+                                },
+                                1024: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 50,
+                                },
+                            }}
+                        >
+                            {womenCloths?.map((cloth) => (
+                                <SwiperSlide key={cloth.id}>
+                                    <Card
+                                        title={cloth?.title}
+                                        image={cloth?.image}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+                </div>
+
+                <div>
+                    <Title title={"jewelry"} />
+                    <div>
+                        <Swiper
+                            navigation={true}
+                            autoplay={{
+                                delay: 2500,
+                                disableOnInteraction: false,
+                            }}
+                            modules={[Navigation, Autoplay]}
+                            className="mySwiper"
+                            breakpoints={{
+                                320: {
+                                    slidesPerView: 1,
+                                    spaceBetween: 20,
+                                },
+                                540: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 20,
+                                },
+                                768: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 40,
+                                },
+                                1024: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 50,
+                                },
+                            }}
+                        >
+                            {jewelry?.map((item) => (
+                                <SwiperSlide key={item.id}>
+                                    <Card
+                                        title={item?.title}
+                                        image={item?.image}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+                </div>
+
+                <div>
+                    <Title title={"electronics"} />
+                    <div>
+                        <Swiper
+                            navigation={true}
+                            autoplay={{
+                                delay: 2500,
+                                disableOnInteraction: false,
+                            }}
+                            modules={[Navigation, Autoplay]}
+                            className="mySwiper"
+                            breakpoints={{
+                                320: {
+                                    slidesPerView: 1,
+                                    spaceBetween: 20,
+                                },
+                                540: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 20,
+                                },
+                                768: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 40,
+                                },
+                                1024: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 50,
+                                },
+                            }}
+                        >
+                            {electronics?.map((item) => (
+                                <SwiperSlide key={item.id}>
+                                    <Card
+                                        title={item?.title}
+                                        image={item?.image}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
                 </div>
             </Wrapper>
 

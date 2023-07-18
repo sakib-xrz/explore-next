@@ -5,13 +5,13 @@ const Card = ({ image, title }) => {
     return (
         <div className="shadow-xl group rounded-sm duration-300 border cursor-pointer">
             <div>
-                <div className="flex justify-center min-h-[25rem]">
+                <div className="flex justify-center h-[25rem]">
                     <Image
                         width="300"
                         height="500"
                         src={image}
                         alt=""
-                        className="p-10 group-hover:scale-110 duration-300"
+                        className="p-10 group-hover:scale-110 duration-300 object-cover"
                     />
                 </div>
                 <div className="bg-[#F5F5F5]">

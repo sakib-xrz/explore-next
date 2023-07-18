@@ -2,7 +2,8 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "./lib/components/Navbar";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Footer from "./lib/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
                 <QueryClientProvider client={queryClient}>
                     <Navbar />
                     {children}
+                    <Footer />
                 </QueryClientProvider>
             </body>
         </html>

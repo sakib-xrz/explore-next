@@ -9,8 +9,8 @@ import { RxCross2 } from "react-icons/rx";
 const Navbar = () => {
     const [showMenu, setShowMenu] = useState(false);
     return (
-        <div className=" text-black bg-white border-b">
-            <Wrapper className="flex items-center justify-between h-20">
+        <div className=" text-black bg-white border-b sticky top-0 z-50">
+            <div className="container px-6 py-12 mx-auto flex items-center justify-between h-20">
                 <h1 className="text-3xl lg:text-4xl font-black">Logo Here.</h1>
                 <div className="hidden md:flex gap-x-5">
                     {menus.map((menu, index) => (
@@ -58,7 +58,7 @@ const Navbar = () => {
                         ))}
                     </div>
                 </div>
-            </Wrapper>
+            </div>
         </div>
     );
 };
