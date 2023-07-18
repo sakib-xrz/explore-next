@@ -3,7 +3,7 @@ import React from "react";
 import Button from "../components/button";
 import Wrapper from "../components/Wrapper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { useQuery } from "@tanstack/react-query";
@@ -54,11 +54,7 @@ const Home = () => {
                     <div>
                         <Swiper
                             navigation={true}
-                            autoplay={{
-                                delay: 2500,
-                                disableOnInteraction: false,
-                            }}
-                            modules={[Navigation, Autoplay]}
+                            modules={[Navigation]}
                             className="mySwiper"
                             breakpoints={{
                                 320: {
@@ -98,11 +94,7 @@ const Home = () => {
                     <div>
                         <Swiper
                             navigation={true}
-                            autoplay={{
-                                delay: 2500,
-                                disableOnInteraction: false,
-                            }}
-                            modules={[Navigation, Autoplay]}
+                            modules={[Navigation]}
                             className="mySwiper"
                             breakpoints={{
                                 320: {
@@ -142,11 +134,7 @@ const Home = () => {
                     <div>
                         <Swiper
                             navigation={true}
-                            autoplay={{
-                                delay: 2500,
-                                disableOnInteraction: false,
-                            }}
-                            modules={[Navigation, Autoplay]}
+                            modules={[Navigation]}
                             className="mySwiper"
                             breakpoints={{
                                 320: {
@@ -186,11 +174,7 @@ const Home = () => {
                     <div>
                         <Swiper
                             navigation={true}
-                            autoplay={{
-                                delay: 2500,
-                                disableOnInteraction: false,
-                            }}
-                            modules={[Navigation, Autoplay]}
+                            modules={[Navigation]}
                             className="mySwiper"
                             breakpoints={{
                                 320: {

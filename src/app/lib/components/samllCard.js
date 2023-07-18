@@ -2,11 +2,13 @@ import React from "react";
 import Image from "next/image";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiTwotoneStar } from "react-icons/ai";
+import { BsFillCartCheckFill } from "react-icons/bs";
 import Rating from "react-rating";
+import Button from "./button";
 
 const SmallCard = ({ image, title, price, rating }) => {
     return (
-        <div className="shadow-xl group rounded-md duration-300 border cursor-pointer">
+        <div className="shadow-md group rounded-md duration-300 border cursor-pointer">
             <div>
                 <div className="flex justify-center h-[25rem] relative">
                     <Image
@@ -40,6 +42,18 @@ const SmallCard = ({ image, title, price, rating }) => {
                             $ {price}
                         </h3>
                     </div>
+                    <Button
+                        bgColor={"bg-black"}
+                        textColor={"text-white"}
+                        className={
+                            "w-full flex justify-center items-center gap-x-2 rounded-t-none"
+                        }
+                    >
+                        <span>
+                            <BsFillCartCheckFill className="text-2xl" />
+                        </span>
+                        Add to cart
+                    </Button>
                 </div>
             </div>
         </div>
