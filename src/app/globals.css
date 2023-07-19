@@ -35,3 +35,7 @@
 .swiper-button-prev::after {
   display: none;
 }
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}

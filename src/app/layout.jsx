@@ -1,11 +1,11 @@
 "use client";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Navbar from "./lib/components/Navbar";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Footer from "./lib/components/footer";
+import Navbar from "@/lib/components/navbar";
+import Footer from "@/lib/components/footer";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 const queryClient = new QueryClient();
 
@@ -17,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body>
                 <QueryClientProvider client={queryClient}>
                     <Navbar />
                     {children}

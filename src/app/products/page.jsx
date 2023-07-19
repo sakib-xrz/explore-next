@@ -1,11 +1,12 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { getAllProducts } from "../api";
-import Wrapper from "../components/Wrapper";
-import Title from "../components/title";
-import Card from "../components/card";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import Loader from "../components/loader";
+import { getAllProducts } from "@/lib/api";
+import Wrapper from "@/lib/components/wrapper";
+import Title from "@/lib/components/title";
+import Loader from "@/lib/components/loader";
+import Card from "@/lib/components/card";
 
 const Product = () => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -70,6 +71,7 @@ const Product = () => {
                         {products?.map((item) => (
                             <Card
                                 key={item.id}
+                                id={item.id}
                                 rating={item.rating}
                                 title={item.title}
                                 image={item.image}

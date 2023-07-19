@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
@@ -9,8 +10,8 @@ const Footer = () => {
                 </h1>
 
                 <div className="mt-6 md:mx-3 shrink-0 md:mt-0 md:w-auto">
-                    <a
-                        href="#"
+                    <Link
+                        href="/signup"
                         className="inline-flex items-center justify-center w-full py-4 px-8 font-medium text-white duration-300 bg-black rounded-sm gap-x-3"
                     >
                         <span>Sign Up Now</span>
@@ -29,7 +30,7 @@ const Footer = () => {
                                 d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
                             />
                         </svg>
-                    </a>
+                    </Link>
                 </div>
             </div>
 

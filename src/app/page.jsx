@@ -1,19 +1,24 @@
 "use client";
 import React from "react";
-import Button from "../components/button";
-import Wrapper from "../components/Wrapper";
+import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { useQuery } from "@tanstack/react-query";
-import { getElectronics, getJewelry, getMenCloth, getWomenCloth } from "../api";
-import Title from "../components/title";
-import Loader from "../components/loader";
-import Link from "next/link";
-import Card from "../components/card";
+import Button from "@/lib/components/button";
+import {
+    getElectronics,
+    getJewelry,
+    getMenCloth,
+    getWomenCloth,
+} from "@/lib/api";
+import Wrapper from "@/lib/components/wrapper";
+import Title from "@/lib/components/title";
+import Loader from "@/lib/components/loader";
+import Card from "@/lib/components/card";
 
-const Home = () => {
+export default function Home() {
     const { data: menCloths, isLoading: menClothsLoading } = useQuery({
         queryKey: ["home/menCloths"],
         queryFn: getMenCloth,
@@ -88,6 +93,7 @@ const Home = () => {
                                 {womenCloths?.map((cloth) => (
                                     <SwiperSlide key={cloth.id}>
                                         <Card
+                                            id={cloth.id}
                                             rating={cloth?.rating}
                                             title={cloth?.title}
                                             price={cloth?.price}
@@ -141,6 +147,7 @@ const Home = () => {
                                 {menCloths?.map((cloth) => (
                                     <SwiperSlide key={cloth.id}>
                                         <Card
+                                            id={cloth.id}
                                             rating={cloth?.rating}
                                             title={cloth?.title}
                                             price={cloth?.price}
@@ -194,6 +201,7 @@ const Home = () => {
                                 {jewelry?.map((item) => (
                                     <SwiperSlide key={item.id}>
                                         <Card
+                                            id={item.id}
                                             rating={item?.rating}
                                             title={item?.title}
                                             price={item?.price}
@@ -247,6 +255,7 @@ const Home = () => {
                                 {electronics?.map((item) => (
                                     <SwiperSlide key={item.id}>
                                         <Card
+                                            id={item.id}
                                             rating={item?.rating}
                                             title={item?.title}
                                             price={item?.price}
@@ -263,6 +272,4 @@ const Home = () => {
             <div></div>
         </div>
     );
-};
-
-export default Home;
+}
