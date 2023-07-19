@@ -1,12 +1,11 @@
 "use client";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getAllProducts } from "@/lib/api";
-import Wrapper from "@/lib/components/wrapper";
-import Title from "@/lib/components/title";
-import Loader from "@/lib/components/loader";
-import Card from "@/lib/components/card";
+import Wrapper from "@/lib/components/Wrapper";
+import Title from "@/lib/components/Title";
+import Loader from "@/lib/components/Loader";
+import Card from "@/lib/components/Card";
 
 const Product = () => {
     const [searchQuery, setSearchQuery] = useState("");

@@ -10,7 +10,7 @@ const Title = ({ title, border = true }) => {
                         : ""
                 } pb-4`}
             >
-                <h2 className="text-black font-medium text-4xl capitalize">
+                <h2 className="text-black font-medium text-3xl lg:text-4xl capitalize">
                     {title}
                 </h2>
                 <div className="w-[100px] h-[2px] absolute bg-black bottom-[-1px] rounded-full"></div>

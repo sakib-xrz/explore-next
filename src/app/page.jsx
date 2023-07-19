@@ -6,17 +6,18 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import Button from "@/lib/components/button";
 import {
     getElectronics,
     getJewelry,
     getMenCloth,
     getWomenCloth,
 } from "@/lib/api";
-import Wrapper from "@/lib/components/wrapper";
-import Title from "@/lib/components/title";
-import Loader from "@/lib/components/loader";
-import Card from "@/lib/components/card";
+
+import Wrapper from "@/lib/components/Wrapper";
+import Title from "@/lib/components/Title";
+import Loader from "@/lib/components/Loader";
+import Card from "@/lib/components/Card";
+import Button from "@/lib/components/Button";
 
 export default function Home() {
     const { data: menCloths, isLoading: menClothsLoading } = useQuery({
@@ -55,13 +56,17 @@ export default function Home() {
                 <div>
                     <div className="flex justify-between items-center">
                         <Title border={false} title={"Women's clothing"} />
-                        <Button
-                            bgColor={"bg-black"}
-                            textColor={"text-white"}
-                            className={"px-2 py-1 capitalize"}
-                        >
-                            <Link href={"/products/womans"}>See All</Link>
-                        </Button>
+                        <Link href={"/products/womans"}>
+                            <Button
+                                bgColor={"bg-black"}
+                                textColor={"text-white"}
+                                className={
+                                    "px-2 py-1 capitalize hidden md:block"
+                                }
+                            >
+                                See All
+                            </Button>
+                        </Link>
                     </div>
                     {womenClothsLoading ? (
                         <Loader />
@@ -109,13 +114,17 @@ export default function Home() {
                 <div>
                     <div className="flex justify-between items-center">
                         <Title border={false} title={"Men's clothing"} />
-                        <Button
-                            bgColor={"bg-black"}
-                            textColor={"text-white"}
-                            className={"px-2 py-1 capitalize"}
-                        >
-                            <Link href={"/products/mens"}>See All</Link>
-                        </Button>
+                        <Link href={"/products/mens"}>
+                            <Button
+                                bgColor={"bg-black"}
+                                textColor={"text-white"}
+                                className={
+                                    "px-2 py-1 capitalize hidden md:block"
+                                }
+                            >
+                                See All
+                            </Button>
+                        </Link>
                     </div>
                     {menClothsLoading ? (
                         <Loader />
@@ -163,13 +172,17 @@ export default function Home() {
                 <div>
                     <div className="flex justify-between items-center">
                         <Title border={false} title={"jewelry"} />
-                        <Button
-                            bgColor={"bg-black"}
-                            textColor={"text-white"}
-                            className={"px-2 py-1 capitalize"}
-                        >
-                            <Link href={"/products/jewelry"}>See All</Link>
-                        </Button>
+                        <Link href={"/products/jewelry"}>
+                            <Button
+                                bgColor={"bg-black"}
+                                textColor={"text-white"}
+                                className={
+                                    "px-2 py-1 capitalize hidden md:block"
+                                }
+                            >
+                                See All
+                            </Button>
+                        </Link>
                     </div>
                     {jewelryLoading ? (
                         <Loader />
@@ -217,13 +230,17 @@ export default function Home() {
                 <div>
                     <div className="flex justify-between items-center">
                         <Title border={false} title={"electronics"} />
-                        <Button
-                            bgColor={"bg-black"}
-                            textColor={"text-white"}
-                            className={"px-2 py-1 capitalize"}
-                        >
-                            <Link href={"/products/electronics"}>See All</Link>
-                        </Button>
+                        <Link href={"/products/electronics"}>
+                            <Button
+                                bgColor={"bg-black"}
+                                textColor={"text-white"}
+                                className={
+                                    "px-2 py-1 capitalize hidden md:block"
+                                }
+                            >
+                                See All
+                            </Button>
+                        </Link>
                     </div>
                     {electronicsLoading ? (
                         <Loader />

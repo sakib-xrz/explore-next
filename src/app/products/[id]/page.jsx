@@ -1,11 +1,11 @@
 "use client";
-import { getSingleProduct } from "@/lib/api";
-import Wrapper from "@/lib/components/wrapper";
-import Button from "@/lib/components/button";
-import Loader from "@/lib/components/loader";
-import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import React from "react";
+import { getSingleProduct } from "@/lib/api";
+import Wrapper from "@/lib/components/Wrapper";
+import Button from "@/lib/components/Button";
+import Loader from "@/lib/components/Loader";
+import { useQuery } from "@tanstack/react-query";
 import { AiFillHeart } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiTwotoneStar } from "react-icons/ai";

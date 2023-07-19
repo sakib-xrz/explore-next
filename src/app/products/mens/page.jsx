@@ -1,9 +1,9 @@
 "use client";
 import { getMenCloth } from "@/lib/api";
-import Wrapper from "@/lib/components/wrapper";
-import Card from "@/lib/components/card";
-import Loader from "@/lib/components/loader";
-import Title from "@/lib/components/title";
+import Wrapper from "@/lib/components/Wrapper";
+import Card from "@/lib/components/Card";
+import Loader from "@/lib/components/Loader";
+import Title from "@/lib/components/Title";
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 

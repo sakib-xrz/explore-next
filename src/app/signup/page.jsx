@@ -11,7 +11,7 @@ const SignUp = () => {
             <h3 className="text-center text-4xl font-semibold uppercase">
                 Sign Up
             </h3>
-            <div class="container flex justify-center min-h-screen px-6 mx-auto">
+            <div class="container flex justify-center px-6 mx-auto">
                 <form class="w-full max-w-md" autocomplete="off">
                     <div class="relative flex items-center mt-8">
                         <span class="absolute">
