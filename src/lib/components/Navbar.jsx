@@ -6,10 +6,15 @@ import { FaBars } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import Button from "./button";
+import GetCart from "../helpers/getCart";
 
 const Navbar = () => {
     const [showMenu, setShowMenu] = useState(false);
     const [active, setActive] = useState("/");
+
+    const { data } = GetCart();
+
+    const cartQuantity = data?.length;
     return (
         <div className=" text-black bg-white border-b sticky top-0 z-50">
             <div className="container px-6 lg:py-12 mx-auto flex items-center justify-between h-20">
@@ -35,7 +40,7 @@ const Navbar = () => {
                     ))}
                     <Link href={"/cart"} className="relative mr-2 text-black ">
                         <small className="absolute top-[-10px] right-[-10px] bg-black text-white rounded-full text-xs p-1 pl-[5px] w-5 h-5 flex justify-center items-center">
-                            {0}
+                            {cartQuantity ?? 0}
                         </small>
                         <AiOutlineShoppingCart className="text-2xl font-medium text-black" />
                     </Link>
@@ -48,7 +53,7 @@ const Navbar = () => {
                 <div className="flex items-center gap-3 md:hidden">
                     <Link href={"/cart"} className="relative mr-2 text-black ">
                         <small className="absolute top-[-10px] right-[-10px] bg-black text-white rounded-full text-xs p-1 pl-[5px] w-5 h-5 flex justify-center items-center">
-                            {0}
+                            {cartQuantity ?? 0}
                         </small>
                         <AiOutlineShoppingCart className="text-3xl font-medium text-black" />
                     </Link>

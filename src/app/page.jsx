@@ -99,6 +99,7 @@ export default function Home() {
                                     <SwiperSlide key={cloth.id}>
                                         <Card
                                             id={cloth.id}
+                                            item={cloth}
                                             rating={cloth?.rating}
                                             title={cloth?.title}
                                             price={cloth?.price}
@@ -157,6 +158,7 @@ export default function Home() {
                                     <SwiperSlide key={cloth.id}>
                                         <Card
                                             id={cloth.id}
+                                            item={cloth}
                                             rating={cloth?.rating}
                                             title={cloth?.title}
                                             price={cloth?.price}
@@ -215,6 +217,7 @@ export default function Home() {
                                     <SwiperSlide key={item.id}>
                                         <Card
                                             id={item.id}
+                                            item={item}
                                             rating={item?.rating}
                                             title={item?.title}
                                             price={item?.price}
@@ -273,6 +276,7 @@ export default function Home() {
                                     <SwiperSlide key={item.id}>
                                         <Card
                                             id={item.id}
+                                            item={item}
                                             rating={item?.rating}
                                             title={item?.title}
                                             price={item?.price}

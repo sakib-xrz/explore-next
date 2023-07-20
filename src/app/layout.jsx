@@ -3,6 +3,7 @@ import "./globals.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Navbar from "@/lib/components/Navbar";
 import Footer from "@/lib/components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body>
+                <Toaster position="top-center" reverseOrder={false} />
                 <QueryClientProvider client={queryClient}>
                     <Navbar />
                     {children}

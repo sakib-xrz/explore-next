@@ -5,12 +5,25 @@ import Button from "./button";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiTwotoneStar } from "react-icons/ai";
-import { AiOutlineHeart } from "react-icons/ai";
-import { AiFillHeart } from "react-icons/ai";
 import Rating from "react-rating";
 import Link from "next/link";
+import setCart from "../helpers/setCart";
+import GetCart from "../helpers/getCart";
+import { toast } from "react-hot-toast";
 
-const Card = ({id, image, title, price, rating }) => {
+const Card = ({id, image, title, price, rating , item}) => {
+
+    const handleAddToCart = (data) => {
+        const cartItem = {
+            data,
+            quantity: 1,
+        };
+        setCart(cartItem);
+        toast.success("Successfully added");
+    };
+
+    const { refetch } = GetCart();
+
     return (
         <div className="shadow-xl group rounded-sm duration-300 border cursor-pointer">
             <div>
@@ -51,6 +64,9 @@ const Card = ({id, image, title, price, rating }) => {
                     </div>
                 </Link>
                 <Button
+                    onClick={() => {
+                        handleAddToCart(item), refetch();
+                    }}
                     bgColor={"bg-black"}
                     textColor={"text-white"}
                     className={
