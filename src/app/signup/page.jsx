@@ -1,31 +1,74 @@
 "use client";
 import React, { useState } from "react";
+import { useFormik } from "formik";
+import { signUpSchema } from "@/lib/schema";
+import defaultImage from "/public/user.png";
+import Image from "next/image";
+import Link from "next/link";
+
+const initialValues = {
+    name: "",
+    email: "",
+    password: "",
+    confirm_password: "",
+};
 
 const SignUp = () => {
+    const [selectedImage, setSelectedImage] = useState(defaultImage);
     const [open, setOpen] = useState({
         password: false,
-        confirmPassword: false,
+        confirm_password: false,
     });
+
+    const {
+        values,
+        errors,
+        touched,
+        handleBlur,
+        handleChange,
+        setFieldValue,
+        handleSubmit,
+    } = useFormik({
+        initialValues,
+        validationSchema: signUpSchema,
+        onSubmit: (values) => {
+            console.log(values);
+        },
+    });
+
+    const handleFileChange = (event) => {
+        if (event.target.files && event.target.files[0]) {
+            const file = event.target.files[0];
+            const imageUrl = URL.createObjectURL(file);
+            setSelectedImage(imageUrl);
+            setFieldValue("photo", file);
+        }
+    };
+
     return (
-        <section class="bg-white py-10">
+        <section className="bg-white py-10">
             <h3 className="text-center text-4xl font-semibold uppercase">
                 Sign Up
             </h3>
-            <div class="container flex justify-center px-6 mx-auto">
-                <form class="w-full max-w-md" autocomplete="off">
-                    <div class="relative flex items-center mt-8">
-                        <span class="absolute">
+            <div className="container flex justify-center px-6 mx-auto">
+                <form
+                    onSubmit={handleSubmit}
+                    className="w-full max-w-md"
+                    autoComplete="off"
+                >
+                    <div className="relative flex items-center mt-8">
+                        <span className="absolute">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="w-6 h-6 mx-3 text-black/70"
+                                className="w-6 h-6 mx-3 text-black/70"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
-                                stroke-width="2"
+                                strokeWidth="2"
                             >
                                 <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
                                     d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                                 />
                             </svg>
@@ -33,27 +76,37 @@ const SignUp = () => {
 
                         <input
                             type="text"
-                            class="block w-full py-3 text-black bg-white border border-black rounded-sm px-11"
-                            placeholder="Username"
+                            className={`block w-full py-3 text-black ${
+                                errors.name && touched.name
+                                    ? "border-red-600 focus:outline-red-600"
+                                    : "border-black"
+                            } bg-white border  rounded-sm px-11`}
+                            placeholder="Name*"
+                            name="name"
+                            value={values.name}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
                         />
                     </div>
-                    <small className="text-red-400 font-medium">
-                        * Name is required
-                    </small>
+                    {errors.name && touched.name ? (
+                        <small className="text-red-600 font-medium">
+                            {errors.name}
+                        </small>
+                    ) : null}
 
-                    <div class="relative flex items-center mt-4">
-                        <span class="absolute">
+                    <div className="relative flex items-center mt-4">
+                        <span className="absolute">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="w-6 h-6 mx-3 text-black/70 "
+                                className="w-6 h-6 mx-3 text-black/70 "
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
-                                stroke-width="2"
+                                strokeWidth="2"
                             >
                                 <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
                                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                                 />
                             </svg>
@@ -62,34 +115,55 @@ const SignUp = () => {
                         <input
                             autoComplete="none"
                             type="email"
-                            class="block w-full py-3 text-black bg-white border border-black rounded-sm px-11 "
-                            placeholder="Email address"
+                            className={`block w-full py-3 text-black ${
+                                errors.email && touched.email
+                                    ? "border-red-600 focus:outline-red-600"
+                                    : "border-black"
+                            } bg-white border  rounded-sm px-11`}
+                            placeholder="Email*"
+                            name="email"
+                            value={values.email}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
                         />
                     </div>
+                    {errors.email && touched.email ? (
+                        <small className="text-red-600 font-medium">
+                            {errors.email}
+                        </small>
+                    ) : null}
 
-                    <div class="relative flex items-center mt-4">
-                        <span class="absolute">
+                    <div className="relative flex items-center mt-4">
+                        <span className="absolute">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="w-6 h-6 mx-3 text-black/70"
+                                className="w-6 h-6 mx-3 text-black/70"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
-                                stroke-width="2"
+                                strokeWidth="2"
                             >
                                 <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
                                     d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
                                 />
                             </svg>
                         </span>
 
                         <input
-                            autocomplete="new-password"
+                            autoComplete="new-password"
                             type={`${open.password ? "text" : "password"}`}
-                            class="block w-full px-10 py-3 text-black bg-white border border-black rounded-sm "
-                            placeholder="Password"
+                            className={`block w-full py-3 text-black ${
+                                errors.password && touched.password
+                                    ? "border-red-600 focus:outline-red-600"
+                                    : "border-black"
+                            } bg-white border  rounded-sm px-11`}
+                            placeholder="Password*"
+                            name="password"
+                            value={values.password}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
                         />
 
                         {open.password ? (
@@ -149,37 +223,53 @@ const SignUp = () => {
                             </span>
                         )}
                     </div>
+                    {errors.password && touched.password ? (
+                        <small className="text-red-600 font-medium">
+                            {errors.password}
+                        </small>
+                    ) : null}
 
-                    <div class="relative flex items-center mt-4">
-                        <span class="absolute">
+                    <div className="relative flex items-center mt-4">
+                        <span className="absolute">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="w-6 h-6 mx-3 text-black/70"
+                                className="w-6 h-6 mx-3 text-black/70"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
-                                stroke-width="2"
+                                strokeWidth="2"
                             >
                                 <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
                                     d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
                                 />
                             </svg>
                         </span>
 
                         <input
-                            autocomplete="new-password"
-                            type={`${open.confirmPassword ? "text" : "password"}`}
-                            class="block w-full px-10 py-3 text-black bg-white border border-black rounded-sm "
-                            placeholder="Confirm Password"
+                            autoComplete="new-password"
+                            type={`${
+                                open.confirm_password ? "text" : "password"
+                            }`}
+                            className={`block w-full py-3 text-black ${
+                                errors.confirm_password &&
+                                touched.confirm_password
+                                    ? "border-red-600 focus:outline-red-600"
+                                    : "border-black"
+                            } bg-white border  rounded-sm px-11`}
+                            placeholder="Confirm Password*"
+                            name="confirm_password"
+                            value={values.confirm_password}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
                         />
-                        {open.confirmPassword ? (
+                        {open.confirm_password ? (
                             <span
                                 onClick={() =>
                                     setOpen((prevState) => ({
                                         ...prevState,
-                                        confirmPassword: false,
+                                        confirm_password: false,
                                     }))
                                 }
                                 className="absolute right-0"
@@ -209,7 +299,7 @@ const SignUp = () => {
                                 onClick={() =>
                                     setOpen((prevState) => ({
                                         ...prevState,
-                                        confirmPassword: true,
+                                        confirm_password: true,
                                     }))
                                 }
                                 className="absolute right-0"
@@ -231,42 +321,49 @@ const SignUp = () => {
                             </span>
                         )}
                     </div>
+                    {errors.confirm_password && touched.confirm_password ? (
+                        <small className="text-red-600 font-medium">
+                            {errors.confirm_password}
+                        </small>
+                    ) : null}
 
-                    <label
-                        for="dropzone-file"
-                        class="flex items-center px-3 py-3 mx-auto mt-4 text-center bg-white border border-dashed border-black rounded-sm cursor-pointer"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="w-6 h-6 text-black/70"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            stroke-width="2"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                    <div className="flex border border-black items-center mt-4 py-1">
+                        <div className="shrink-0">
+                            <Image
+                                width={500}
+                                height={500}
+                                className="h-10 w-10 object-cover rounded-full mx-2"
+                                src={selectedImage}
+                                alt="Current profile photo"
                             />
-                        </svg>
+                        </div>
+                        <label className="block">
+                            <span className="sr-only">
+                                Choose profile photo
+                            </span>
+                            <input
+                                type="file"
+                                className="block w-full text-sm text-slate-500 file:mr-4 file:py-1 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-black/40 hover:file:cursor-pointer"
+                                name="photo"
+                                onChange={handleFileChange}
+                            />
+                        </label>
+                    </div>
 
-                        <h2 class="mx-3 text-gray-400">Profile Photo</h2>
-
-                        <input id="dropzone-file" type="file" class="hidden" />
-                    </label>
-
-                    <div class="mt-6">
-                        <button class="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black rounded-sm">
+                    <div className="mt-6">
+                        <button
+                            type="submit"
+                            className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black rounded-sm"
+                        >
                             Sign Up
                         </button>
 
-                        <div class="mt-6 text-center ">
-                            <p class="text-md text-black ">
+                        <div className="mt-6 text-center ">
+                            <p className="text-md text-black ">
                                 Already have an account?{" "}
-                                <span className="underline underline-offset-2 cursor-pointer">
+                                <Link href={"/login"} className="underline underline-offset-2 cursor-pointer">
                                     Log In
-                                </span>
+                                </Link>
                             </p>
                         </div>
                     </div>

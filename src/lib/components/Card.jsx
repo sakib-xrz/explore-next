@@ -8,7 +8,6 @@ import { AiTwotoneStar } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import Rating from "react-rating";
-import { useState } from "react";
 import Link from "next/link";
 
 const Card = ({id, image, title, price, rating }) => {

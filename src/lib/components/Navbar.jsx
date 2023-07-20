@@ -4,6 +4,7 @@ import { menus } from "../enums/globals";
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import Button from "./button";
 
 const Navbar = () => {
@@ -32,13 +33,25 @@ const Navbar = () => {
                             {menu.route}
                         </Link>
                     ))}
+                    <Link href={"/cart"} className="relative mr-2 text-black ">
+                        <small className="absolute top-[-10px] right-[-10px] bg-black text-white rounded-full text-xs p-1 pl-[5px] w-5 h-5 flex justify-center items-center">
+                            {0}
+                        </small>
+                        <AiOutlineShoppingCart className="text-2xl font-medium text-black" />
+                    </Link>
                     <Link href={"/signup"}>
                         <Button bgColor={"bg-black"} textColor={"text-white"}>
                             Sign Up
                         </Button>
                     </Link>
                 </div>
-                <div className="md:hidden">
+                <div className="flex items-center gap-3 md:hidden">
+                    <Link href={"/cart"} className="relative mr-2 text-black ">
+                        <small className="absolute top-[-10px] right-[-10px] bg-black text-white rounded-full text-xs p-1 pl-[5px] w-5 h-5 flex justify-center items-center">
+                            {0}
+                        </small>
+                        <AiOutlineShoppingCart className="text-3xl font-medium text-black" />
+                    </Link>
                     {showMenu ? (
                         <RxCross2
                             onClick={() => setShowMenu(false)}
