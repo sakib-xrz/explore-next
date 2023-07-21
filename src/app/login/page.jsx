@@ -47,7 +47,7 @@ const Login = () => {
                     className="w-full max-w-md"
                     autoComplete="none"
                 >
-                    <div className="relative flex items-center mt-4">
+                    <div className="relative flex items-center mt-8">
                         <span className="absolute">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -195,7 +195,7 @@ const Login = () => {
                                 New here?{" "}
                                 <Link
                                     href={"/signup"}
-                                    className="underline underline-offset-2 cursor-pointer"
+                                    className="underline font-bold underline-offset-2 cursor-pointer"
                                 >
                                     Sign Up
                                 </Link>

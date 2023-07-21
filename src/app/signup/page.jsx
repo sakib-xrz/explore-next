@@ -374,7 +374,7 @@ const SignUp = () => {
                                 Already have an account?{" "}
                                 <Link
                                     href={"/login"}
-                                    className="underline underline-offset-2 cursor-pointer"
+                                    className="underline font-bold underline-offset-2 cursor-pointer"
                                 >
                                     Log In
                                 </Link>

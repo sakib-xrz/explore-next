@@ -49,9 +49,11 @@ const Navbar = () => {
                         </Link>
                     ))}
                     <Link href={"/cart"} className="relative mr-2 text-black ">
-                        <small className="absolute top-[-10px] right-[-10px] bg-black text-white rounded-full text-xs p-1 pl-[5px] w-5 h-5 flex justify-center items-center">
-                            {cartQuantity ?? 0}
-                        </small>
+                        {cartQuantity > 0 && (
+                            <small className="absolute top-[-10px] right-[-10px] bg-black text-white rounded-full text-xs p-1 pl-[5px] w-5 h-5 flex justify-center items-center">
+                                {cartQuantity}
+                            </small>
+                        )}
                         <AiOutlineShoppingCart className="text-2xl font-medium text-black" />
                     </Link>
 
@@ -64,12 +66,12 @@ const Navbar = () => {
                             Logout
                         </Button>
                     ) : (
-                        <Link href={"/signup"}>
+                        <Link href={"/login"}>
                             <Button
                                 bgColor={"bg-black"}
                                 textColor={"text-white"}
                             >
-                                Sign Up
+                                Login
                             </Button>
                         </Link>
                     )}
@@ -127,14 +129,14 @@ const Navbar = () => {
                                 Logout
                             </Button>
                         ) : (
-                            <Link href={"/signup"}>
+                            <Link href={"/login"}>
                                 <Button
                                     onClick={() => setShowMenu(false)}
                                     className={"w-full"}
                                     bgColor={"bg-black"}
                                     textColor={"text-white"}
                                 >
-                                    Sign Up
+                                    Login
                                 </Button>
                             </Link>
                         )}
