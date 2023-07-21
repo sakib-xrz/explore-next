@@ -12,9 +12,9 @@ const Button = ({
             onClick={onClick}
             disabled={disabled}
             type={type}
-            className={`${className} ${bgColor ?? "bg-white"} ${
+            className={`${bgColor ?? "bg-white"} ${
                 textColor ?? "text-black"
-            } uppercase py-4 px-8 rounded-sm duration-300 font-medium`}
+            } uppercase py-4 px-8 rounded-md duration-300 font-medium ${className}`}
         >
             {children}
         </button>

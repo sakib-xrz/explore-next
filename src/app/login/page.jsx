@@ -13,7 +13,7 @@ const initialValues = {
 };
 
 const Login = () => {
-        const router = useRouter();
+    const router = useRouter();
     const [open, setOpen] = useState({
         password: false,
     });
@@ -26,12 +26,12 @@ const Login = () => {
                 console.log(values);
                 const result = loginUser(values);
                 if (result === "No users found. Please sign up first.") {
-                    toast.error(result)
-                }else if (result === "Invalid email or password") {
-                    toast.error(result)
-                }else{
-                    actions.resetForm()
-                    toast.success(result)
+                    toast.error(result);
+                } else if (result === "Invalid email or password") {
+                    toast.error(result);
+                } else {
+                    actions.resetForm();
+                    toast.success(result);
                     router.push("/");
                 }
             },
@@ -72,7 +72,7 @@ const Login = () => {
                                 errors.email && touched.email
                                     ? "border-red-600 focus:outline-red-600"
                                     : "border-black"
-                            } bg-white border  rounded-sm px-11`}
+                            } bg-white border  rounded-md px-11`}
                             placeholder="Email*"
                             name="email"
                             value={values.email}
@@ -111,7 +111,7 @@ const Login = () => {
                                 errors.password && touched.password
                                     ? "border-red-600 focus:outline-red-600"
                                     : "border-black"
-                            } bg-white border  rounded-sm px-11`}
+                            } bg-white border  rounded-md px-11`}
                             placeholder="Password*"
                             name="password"
                             value={values.password}
@@ -185,7 +185,7 @@ const Login = () => {
                     <div className="mt-6">
                         <button
                             type="submit"
-                            className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black rounded-sm"
+                            className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black rounded-md"
                         >
                             Login
                         </button>

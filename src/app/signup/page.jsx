@@ -9,7 +9,6 @@ import createUser from "@/lib/helpers/createUser";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
-
 const initialValues = {
     name: "",
     email: "",
@@ -18,7 +17,7 @@ const initialValues = {
 };
 
 const SignUp = () => {
-    const router = useRouter()
+    const router = useRouter();
     const [selectedImage, setSelectedImage] = useState(defaultImage);
     const [open, setOpen] = useState({
         password: false,
@@ -92,7 +91,7 @@ const SignUp = () => {
                                 errors.name && touched.name
                                     ? "border-red-600 focus:outline-red-600"
                                     : "border-black"
-                            } bg-white border  rounded-sm px-11`}
+                            } bg-white border  rounded-md px-11`}
                             placeholder="Name*"
                             name="name"
                             value={values.name}
@@ -131,7 +130,7 @@ const SignUp = () => {
                                 errors.email && touched.email
                                     ? "border-red-600 focus:outline-red-600"
                                     : "border-black"
-                            } bg-white border  rounded-sm px-11`}
+                            } bg-white border  rounded-md px-11`}
                             placeholder="Email*"
                             name="email"
                             value={values.email}
@@ -170,7 +169,7 @@ const SignUp = () => {
                                 errors.password && touched.password
                                     ? "border-red-600 focus:outline-red-600"
                                     : "border-black"
-                            } bg-white border  rounded-sm px-11`}
+                            } bg-white border  rounded-md px-11`}
                             placeholder="Password*"
                             name="password"
                             value={values.password}
@@ -269,7 +268,7 @@ const SignUp = () => {
                                 touched.confirm_password
                                     ? "border-red-600 focus:outline-red-600"
                                     : "border-black"
-                            } bg-white border  rounded-sm px-11`}
+                            } bg-white border  rounded-md px-11`}
                             placeholder="Confirm Password*"
                             name="confirm_password"
                             value={values.confirm_password}
@@ -365,7 +364,7 @@ const SignUp = () => {
                     <div className="mt-6">
                         <button
                             type="submit"
-                            className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black rounded-sm"
+                            className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-black rounded-md"
                         >
                             Sign Up
                         </button>

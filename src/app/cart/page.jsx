@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 
 const Cart = () => {
     const { data, refetch } = GetCart();
-    const total  = calculateTotal(data);
+    const total = calculateTotal(data);
 
     const handleClear = () => {
         Swal.fire({
@@ -84,10 +84,10 @@ const Cart = () => {
 
                                 <Link href={"/checkout"}>
                                     <Button
-                                    bgColor={"bg-black"}
-                                    textColor={"text-white"}
+                                        bgColor={"bg-black"}
+                                        textColor={"text-white"}
                                         className={
-                                            "w-full rounded-sm md:text-xl"
+                                            "w-full rounded-md md:text-xl"
                                         }
                                     >
                                         PROCEED TO CHECKOUT

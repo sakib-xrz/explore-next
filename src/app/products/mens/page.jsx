@@ -36,7 +36,7 @@ const Mens = () => {
                 <Title border={false} title={"Men's clothing"} />
                 <div>
                     <div className="dropdown inline-block relative">
-                        <button className="bg-white text-black border border-black font-semibold py-2 px-4 rounded-sm inline-flex items-center">
+                        <button className="bg-white text-black border border-black font-semibold py-2 px-4 rounded-md inline-flex items-center">
                             <span className="mr-1">Sort by price</span>
                             <svg
                                 className="fill-current h-4 w-4"

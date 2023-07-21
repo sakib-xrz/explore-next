@@ -53,7 +53,7 @@ const Product = () => {
                             <input
                                 type="search"
                                 name="search"
-                                className="py-4 text-xl text-black rounded-sm pl-10 pr-3 focus:outline-none focus:bg-white border w-full md:w-96"
+                                className="py-4 text-xl text-black rounded-md pl-10 pr-3 focus:outline-none focus:bg-white border w-full md:w-96"
                                 placeholder="Search..."
                                 autoComplete="off"
                                 value={searchQuery}

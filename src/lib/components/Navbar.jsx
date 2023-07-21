@@ -9,6 +9,8 @@ import Button from "./button";
 import GetCart from "../helpers/getCart";
 import GetUser from "../helpers/getUser";
 import { toast } from "react-hot-toast";
+import Image from "next/image";
+import logo from "/public/logo.png"
 
 const Navbar = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -18,7 +20,7 @@ const Navbar = () => {
 
     const handleLogout = () => {
         localStorage.removeItem("loginUser");
-        toast.success("Logout successful")
+        toast.success("Logout successful");
         refetch();
     };
 
@@ -31,7 +33,7 @@ const Navbar = () => {
                     href={"/"}
                     className="text-3xl lg:text-4xl font-black"
                 >
-                    Logo Here.
+                    <Image src={logo} width={"225"} height={"45"} alt="" />
                 </Link>
                 <div className="hidden md:flex items-center gap-x-5">
                     {menus.map((menu, index) => (

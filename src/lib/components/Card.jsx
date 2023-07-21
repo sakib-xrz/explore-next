@@ -11,8 +11,7 @@ import setCart from "../helpers/setCart";
 import GetCart from "../helpers/getCart";
 import { toast } from "react-hot-toast";
 
-const Card = ({id, image, title, price, rating , item}) => {
-
+const Card = ({ id, image, title, price, rating, item }) => {
     const handleAddToCart = (data) => {
         setCart(data);
         toast.success("Successfully added");
@@ -21,7 +20,7 @@ const Card = ({id, image, title, price, rating , item}) => {
     const { refetch } = GetCart();
 
     return (
-        <div className="shadow-xl group rounded-sm duration-300 border cursor-pointer">
+        <div className="shadow-xl group rounded-md duration-300 border cursor-pointer">
             <div>
                 <Link href={`/products/${id}`}>
                     <div className="flex justify-center h-[25rem]">
@@ -63,10 +62,10 @@ const Card = ({id, image, title, price, rating , item}) => {
                     onClick={() => {
                         handleAddToCart(item), refetch();
                     }}
-                    bgColor={"bg-black"}
-                    textColor={"text-white"}
+                    textColor={"text-black"}
+                    bgColor={"bg-[#F5F5F5]"}
                     className={
-                        "w-full flex justify-center items-center gap-x-2 rounded-t-none"
+                        "w-full border-t flex justify-center items-center gap-x-2 rounded-t-none hover:bg-black hover:text-white"
                     }
                 >
                     <span>

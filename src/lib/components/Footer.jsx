@@ -12,7 +12,7 @@ const Footer = () => {
                 <div className="mt-6 md:mx-3 shrink-0 md:mt-0 md:w-auto">
                     <Link
                         href="/signup"
-                        className="inline-flex items-center justify-center w-full py-4 px-8 font-medium text-white duration-300 bg-black rounded-sm gap-x-3"
+                        className="inline-flex items-center justify-center w-full py-4 px-8 font-medium text-white duration-300 bg-black rounded-md gap-x-3"
                     >
                         <span>Sign Up Now</span>
 

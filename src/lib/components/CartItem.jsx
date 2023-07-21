@@ -102,7 +102,7 @@ const CartItem = ({ item, refetch }) => {
                     </div>
                 </div>
                 <div className="flex items-center justify-between pt-3">
-                    <div className="flex justify-center items-center w-auto border rounded-sm font-medium">
+                    <div className="flex justify-center items-center w-auto border rounded-md font-medium">
                         <button
                             className="border-none bg-none p-1 cursor-pointer outline-none font-bold disabled:opacity-20 px-3"
                             disabled={quantity < 2}

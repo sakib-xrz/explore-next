@@ -42,7 +42,7 @@ export default function Home() {
             <div className="bg-image bg-right-bottom md:bg-left flex justify-center items-center text-white">
                 <div className="space-y-6 lg:space-y-10">
                     <h1 className="lg:text-8xl text-4xl font-bold text-center">
-                        Welcome to Our <br /> Online Store
+                        Welcome to our <br /> Online Store
                     </h1>
                     <div className="flex justify-center">
                         <Button className={"lg:text-2xl"}>
@@ -54,18 +54,12 @@ export default function Home() {
 
             <Wrapper className={"space-y-14"}>
                 <div>
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-start">
                         <Title border={false} title={"Women's clothing"} />
                         <Link href={"/products/womans"}>
-                            <Button
-                                bgColor={"bg-black"}
-                                textColor={"text-white"}
-                                className={
-                                    "px-2 py-1 capitalize hidden md:block"
-                                }
-                            >
+                            <button className="px-2 py-1 rounded-sm font-medium border border-black mt-1 lg:mt-3">
                                 See All
-                            </Button>
+                            </button>
                         </Link>
                     </div>
                     {womenClothsLoading ? (
@@ -96,7 +90,10 @@ export default function Home() {
                                 }}
                             >
                                 {womenCloths?.map((cloth) => (
-                                    <SwiperSlide key={cloth.id} className="w-fit">
+                                    <SwiperSlide
+                                        key={cloth.id}
+                                        className="w-fit"
+                                    >
                                         <Card
                                             id={cloth.id}
                                             item={cloth}
@@ -113,18 +110,12 @@ export default function Home() {
                 </div>
 
                 <div>
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-start">
                         <Title border={false} title={"Men's clothing"} />
                         <Link href={"/products/mens"}>
-                            <Button
-                                bgColor={"bg-black"}
-                                textColor={"text-white"}
-                                className={
-                                    "px-2 py-1 capitalize hidden md:block"
-                                }
-                            >
+                            <button className="px-2 py-1 rounded-sm font-medium border border-black mt-1 lg:mt-3">
                                 See All
-                            </Button>
+                            </button>
                         </Link>
                     </div>
                     {menClothsLoading ? (
@@ -172,18 +163,12 @@ export default function Home() {
                 </div>
 
                 <div>
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-start">
                         <Title border={false} title={"jewelry"} />
                         <Link href={"/products/jewelry"}>
-                            <Button
-                                bgColor={"bg-black"}
-                                textColor={"text-white"}
-                                className={
-                                    "px-2 py-1 capitalize hidden md:block"
-                                }
-                            >
+                            <button className="px-2 py-1 rounded-sm font-medium border border-black mt-1 lg:mt-3">
                                 See All
-                            </Button>
+                            </button>
                         </Link>
                     </div>
                     {jewelryLoading ? (
@@ -231,18 +216,12 @@ export default function Home() {
                 </div>
 
                 <div>
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-start">
                         <Title border={false} title={"electronics"} />
                         <Link href={"/products/electronics"}>
-                            <Button
-                                bgColor={"bg-black"}
-                                textColor={"text-white"}
-                                className={
-                                    "px-2 py-1 capitalize hidden md:block"
-                                }
-                            >
+                            <button className="px-2 py-1 rounded-sm font-medium border border-black mt-1 lg:mt-3">
                                 See All
-                            </Button>
+                            </button>
                         </Link>
                     </div>
                     {electronicsLoading ? (
