@@ -7,12 +7,20 @@ import { RxCross2 } from "react-icons/rx";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import Button from "./button";
 import GetCart from "../helpers/getCart";
+import GetUser from "../helpers/getUser";
+import { toast } from "react-hot-toast";
 
 const Navbar = () => {
     const [showMenu, setShowMenu] = useState(false);
     const [active, setActive] = useState("/");
-
+    const { data: currentUser, refetch } = GetUser();
     const { data } = GetCart();
+
+    const handleLogout = () => {
+        localStorage.removeItem("loginUser");
+        toast.success("Logout successful")
+        refetch();
+    };
 
     const cartQuantity = data?.length;
     return (
@@ -44,11 +52,25 @@ const Navbar = () => {
                         </small>
                         <AiOutlineShoppingCart className="text-2xl font-medium text-black" />
                     </Link>
-                    <Link href={"/signup"}>
-                        <Button bgColor={"bg-black"} textColor={"text-white"}>
-                            Sign Up
+
+                    {currentUser && currentUser.email ? (
+                        <Button
+                            onClick={() => handleLogout()}
+                            bgColor={"bg-black"}
+                            textColor={"text-white"}
+                        >
+                            Logout
                         </Button>
-                    </Link>
+                    ) : (
+                        <Link href={"/signup"}>
+                            <Button
+                                bgColor={"bg-black"}
+                                textColor={"text-white"}
+                            >
+                                Sign Up
+                            </Button>
+                        </Link>
+                    )}
                 </div>
                 <div className="flex items-center gap-3 md:hidden">
                     <Link href={"/cart"} className="relative mr-2 text-black ">
@@ -91,15 +113,29 @@ const Navbar = () => {
                                 </Link>
                             </p>
                         ))}
-                        <Link href={"/signup"}>
+                        {currentUser && currentUser.email ? (
                             <Button
+                                onClick={() => {
+                                    handleLogout(), setShowMenu(false);
+                                }}
                                 className={"w-full"}
                                 bgColor={"bg-black"}
                                 textColor={"text-white"}
                             >
-                                Sign Up
+                                Logout
                             </Button>
-                        </Link>
+                        ) : (
+                            <Link href={"/signup"}>
+                                <Button
+                                    onClick={() => setShowMenu(false)}
+                                    className={"w-full"}
+                                    bgColor={"bg-black"}
+                                    textColor={"text-white"}
+                                >
+                                    Sign Up
+                                </Button>
+                            </Link>
+                        )}
                     </div>
                 </div>
             </div>

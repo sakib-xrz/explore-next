@@ -5,6 +5,10 @@ import { signUpSchema } from "@/lib/schema";
 import defaultImage from "/public/user.png";
 import Image from "next/image";
 import Link from "next/link";
+import createUser from "@/lib/helpers/createUser";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
+
 
 const initialValues = {
     name: "",
@@ -14,6 +18,7 @@ const initialValues = {
 };
 
 const SignUp = () => {
+    const router = useRouter()
     const [selectedImage, setSelectedImage] = useState(defaultImage);
     const [open, setOpen] = useState({
         password: false,
@@ -31,8 +36,15 @@ const SignUp = () => {
     } = useFormik({
         initialValues,
         validationSchema: signUpSchema,
-        onSubmit: (values) => {
-            console.log(values);
+        onSubmit: (values, actions) => {
+            const result = createUser(values);
+            if (result === "User already exists") {
+                toast.error(result);
+            } else {
+                actions.resetForm();
+                toast.success(result);
+                router.push("/");
+            }
         },
     });
 
@@ -361,7 +373,10 @@ const SignUp = () => {
                         <div className="mt-6 text-center ">
                             <p className="text-md text-black ">
                                 Already have an account?{" "}
-                                <Link href={"/login"} className="underline underline-offset-2 cursor-pointer">
+                                <Link
+                                    href={"/login"}
+                                    className="underline underline-offset-2 cursor-pointer"
+                                >
                                     Log In
                                 </Link>
                             </p>

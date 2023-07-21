@@ -34,7 +34,7 @@ const Cart = () => {
             {!data || data?.length === 0 ? (
                 <div className="h-[calc(100vh-10rem)] flex justify-center items-center">
                     <div>
-                        <h1 className="text-3xl md:text-5xl font-black text-center leading-10 uppercase">
+                        <h1 className="text-3xl md:text-5xl font-bold text-center leading-10 uppercase">
                             No item available
                         </h1>
                     </div>
@@ -43,7 +43,7 @@ const Cart = () => {
                 <div className="lg:flex lg:gap-x-4">
                     <div className="lg:w-8/12 w-full md:py-12 py-8 bg-white">
                         <div className="flex pb-10 justify-between items-center text-neutral">
-                            <p className="text-3xl md:text-5xl font-black leading-10">
+                            <p className="text-3xl md:text-5xl font-bold leading-10">
                                 Shopping Cart
                             </p>
                             <p
@@ -64,9 +64,9 @@ const Cart = () => {
                         ))}
                     </div>
                     <div className="lg:w-4/12 w-full bg-[#F3F3F3] lg:h-[calc(100vh-5rem)]">
-                        <div className="flex flex-col p-10 lg:pt-20 justify-between lg:h-[calc(100vh-5rem)]">
+                        <div className="flex flex-col p-10  justify-between lg:h-[calc(100vh-5rem)]">
                             <div className="font-semibold">
-                                <p className="text-3xl md:text-4xl font-black text-center text-neutral">
+                                <p className="text-3xl md:text-4xl font-bold text-center text-neutral underline underline-offset-[12px]">
                                     Order Summary
                                 </p>
                             </div>

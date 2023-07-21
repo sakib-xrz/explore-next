@@ -12,12 +12,22 @@ import { AiTwotoneStar } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import Rating from "react-rating";
+import GetCart from "@/lib/helpers/getCart";
+import setCart from "@/lib/helpers/setCart";
+import { toast } from "react-hot-toast";
 
 const ProductDetails = ({ params: { id } }) => {
     const { data, isLoading } = useQuery({
         queryKey: [`product/${id}`],
         queryFn: () => getSingleProduct(id),
     });
+
+        const handleAddToCart = (data) => {
+            setCart(data);
+            toast.success("Successfully added");
+        };
+
+        const { refetch } = GetCart();
 
     return (
         <Wrapper className={"my-10 space-y-14"}>
@@ -39,7 +49,7 @@ const ProductDetails = ({ params: { id } }) => {
                     {/* right column  */}
                     <div className="lg:w-8/12">
                         {/* PRODUCT TITLE */}
-                        <div className="text-3xl font-semibold mb-2 leading-tight">
+                        <div className="text-3xl font-semibold leading-tight">
                             {data?.title}
                         </div>
 
@@ -86,6 +96,9 @@ const ProductDetails = ({ params: { id } }) => {
                                 {data?.description}
                             </p>
                             <Button
+                                onClick={() => {
+                                    handleAddToCart(data), refetch();
+                                }}
                                 bgColor={"bg-black"}
                                 textColor={"text-white"}
                                 className={

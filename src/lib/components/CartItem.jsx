@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import Image from "next/image";
 
 const CartItem = ({ item, refetch }) => {
-    const { image, price, name, category } = item.data;
+    const { image, price, title, category } = item;
     const [quantity, setQuantity] = useState(item?.quantity ?? 1);
 
     const [totalPrice, setTotalPrice] = useState(quantity * price);
@@ -17,7 +17,7 @@ const CartItem = ({ item, refetch }) => {
         const cartItems = JSON.parse(cart);
 
         const updatedCartItems = cartItems.map((cartItem) => {
-            if (cartItem.data.id === item.data.id) {
+            if (cartItem.id === item.id) {
                 return {
                     ...cartItem,
                     quantity: cartItem.quantity + 1,
@@ -37,7 +37,7 @@ const CartItem = ({ item, refetch }) => {
         const cartItems = JSON.parse(cart);
 
         const updatedCartItems = cartItems.map((cartItem) => {
-            if (cartItem.data.id === item.data.id) {
+            if (cartItem.id === item.id) {
                 return {
                     ...cartItem,
                     quantity: cartItem.quantity - 1,
@@ -52,9 +52,9 @@ const CartItem = ({ item, refetch }) => {
 
     const handleRemove = (item) => {
         const data = JSON.parse(localStorage.getItem("cart"));
-        const deleteItem = item.data.id;
+        const deleteItem = item.id;
 
-        const updatedData = data.filter((item) => item.data.id !== deleteItem);
+        const updatedData = data.filter((item) => item.id !== deleteItem);
         localStorage.setItem("cart", JSON.stringify(updatedData));
         refetch();
         toast.success("Successfully remove");
@@ -83,7 +83,7 @@ const CartItem = ({ item, refetch }) => {
                 <div className="flex justify-between w-full pt-1">
                     <div>
                         <p className="font-semibold text-xl md:text-2xl text-neutral">
-                            {name}
+                            {title}
                         </p>
                         <p className="text-neutral font-medium">
                             <span>Price:</span> ${price?.toFixed(2)}

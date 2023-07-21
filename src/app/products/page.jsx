@@ -70,6 +70,7 @@ const Product = () => {
                         {products?.map((item) => (
                             <Card
                                 key={item.id}
+                                item={item}
                                 id={item.id}
                                 rating={item.rating}
                                 title={item.title}

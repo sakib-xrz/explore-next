@@ -14,11 +14,7 @@ import { toast } from "react-hot-toast";
 const Card = ({id, image, title, price, rating , item}) => {
 
     const handleAddToCart = (data) => {
-        const cartItem = {
-            data,
-            quantity: 1,
-        };
-        setCart(cartItem);
+        setCart(data);
         toast.success("Successfully added");
     };
 

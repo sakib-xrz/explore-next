@@ -4,18 +4,20 @@ const setCart = (item) => {
     if (cart) {
         const items = JSON.parse(cart);
 
-        const existingItem = items.find(
-            (cartItem) => cartItem.data.id === item.data.id
+        const existingItemIndex = items.findIndex(
+            (cartItem) => cartItem?.id === item?.id
         );
 
-        if (existingItem) {
-            existingItem.quantity += item.quantity;
+        if (existingItemIndex !== -1) {
+            items[existingItemIndex].quantity += 1;
         } else {
+            item.quantity = 1;
             items.push(item);
         }
 
         localStorage.setItem("cart", JSON.stringify(items));
     } else {
+        item.quantity = 1;
         const items = [item];
         localStorage.setItem("cart", JSON.stringify(items));
     }

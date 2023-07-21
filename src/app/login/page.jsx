@@ -1,8 +1,11 @@
 "use client";
+import loginUser from "@/lib/helpers/loginUser";
 import { loginSchema } from "@/lib/schema";
 import { useFormik } from "formik";
 import Link from "next/link";
 import React, { useState } from "react";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const initialValues = {
     email: "",
@@ -10,6 +13,7 @@ const initialValues = {
 };
 
 const Login = () => {
+        const router = useRouter();
     const [open, setOpen] = useState({
         password: false,
     });
@@ -18,8 +22,18 @@ const Login = () => {
         useFormik({
             initialValues,
             validationSchema: loginSchema,
-            onSubmit: (values) => {
+            onSubmit: (values, actions) => {
                 console.log(values);
+                const result = loginUser(values);
+                if (result === "No users found. Please sign up first.") {
+                    toast.error(result)
+                }else if (result === "Invalid email or password") {
+                    toast.error(result)
+                }else{
+                    actions.resetForm()
+                    toast.success(result)
+                    router.push("/");
+                }
             },
         });
     return (

@@ -96,7 +96,7 @@ export default function Home() {
                                 }}
                             >
                                 {womenCloths?.map((cloth) => (
-                                    <SwiperSlide key={cloth.id}>
+                                    <SwiperSlide key={cloth.id} className="w-fit">
                                         <Card
                                             id={cloth.id}
                                             item={cloth}

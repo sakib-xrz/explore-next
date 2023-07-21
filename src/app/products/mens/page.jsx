@@ -76,6 +76,7 @@ const Mens = () => {
                         <Card
                             key={item.id}
                             id={item.id}
+                            item={item}
                             rating={item.rating}
                             title={item.title}
                             image={item.image}
