@@ -2,9 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 
 function GetUser() {
     return useQuery({
-        queryKey: ["loginUser"],
+        queryKey: ["currentUser"],
         queryFn: () => {
-            const data = localStorage.getItem("loginUser");
+            const data = localStorage.getItem("currentUser");
             return data ? JSON.parse(data) : null;
         },
     });

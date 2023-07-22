@@ -45,9 +45,11 @@ export default function Home() {
                         Welcome to our <br /> Online Store
                     </h1>
                     <div className="flex justify-center">
-                        <Button className={"lg:text-2xl"}>
-                            <Link href={"/products"}>See all products</Link>
-                        </Button>
+                        <Link href={"/products"}>
+                            <Button className={"lg:text-2xl"}>
+                                See all products
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </div>

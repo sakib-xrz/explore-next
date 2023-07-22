@@ -15,10 +15,11 @@ const createUser = (user) => {
             localStorage.setItem("users", JSON.stringify(userData));
 
             const loginUser = {
+                name: user.name,
                 email: user.email,
                 password: user.password,
             };
-            localStorage.setItem("loginUser", JSON.stringify(loginUser));
+            localStorage.setItem("currentUser", JSON.stringify(loginUser));
 
             return "User created successfully";
         }
@@ -27,10 +28,11 @@ const createUser = (user) => {
         localStorage.setItem("users", JSON.stringify(users));
 
         const loginUser = {
+            name: user.name,
             email: user.email,
             password: user.password,
         };
-        localStorage.setItem("loginUser", JSON.stringify(loginUser));
+        localStorage.setItem("currentUser", JSON.stringify(loginUser));
 
         return "User created successfully";
     }

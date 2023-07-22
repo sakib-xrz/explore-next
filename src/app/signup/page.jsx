@@ -8,6 +8,7 @@ import Link from "next/link";
 import createUser from "@/lib/helpers/createUser";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import GetUser from "@/lib/helpers/getUser";
 
 const initialValues = {
     name: "",
@@ -23,6 +24,8 @@ const SignUp = () => {
         password: false,
         confirm_password: false,
     });
+
+    const { refetch } = GetUser();
 
     const {
         values,
@@ -42,6 +45,7 @@ const SignUp = () => {
             } else {
                 actions.resetForm();
                 toast.success(result);
+                refetch();
                 router.push("/");
             }
         },

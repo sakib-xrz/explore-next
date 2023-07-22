@@ -5,7 +5,7 @@ import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import Button from "./button";
+import Button from "./Button";
 import GetCart from "../helpers/getCart";
 import GetUser from "../helpers/getUser";
 import { toast } from "react-hot-toast";
@@ -19,7 +19,7 @@ const Navbar = () => {
     const { data } = GetCart();
 
     const handleLogout = () => {
-        localStorage.removeItem("loginUser");
+        localStorage.removeItem("currentUser");
         toast.success("Logout successful");
         refetch();
     };

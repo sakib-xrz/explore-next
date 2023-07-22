@@ -6,6 +6,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import GetUser from "@/lib/helpers/getUser";
 
 const initialValues = {
     email: "",
@@ -17,6 +18,8 @@ const Login = () => {
     const [open, setOpen] = useState({
         password: false,
     });
+
+    const { refetch } = GetUser();
 
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
         useFormik({
@@ -32,6 +35,7 @@ const Login = () => {
                 } else {
                     actions.resetForm();
                     toast.success(result);
+                    refetch();
                     router.push("/");
                 }
             },

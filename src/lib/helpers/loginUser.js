@@ -11,7 +11,12 @@ const loginUser = (credentials) => {
         );
 
         if (loginUser) {
-            localStorage.setItem("loginUser", JSON.stringify(credentials));
+            const userDataToStore = {
+                ...credentials,
+                name: loginUser.name,
+            };
+
+            localStorage.setItem("currentUser", JSON.stringify(userDataToStore));
             return "Login successful";
         } else {
             return "Invalid email or password";

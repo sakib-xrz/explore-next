@@ -22,12 +22,12 @@ const ProductDetails = ({ params: { id } }) => {
         queryFn: () => getSingleProduct(id),
     });
 
-        const handleAddToCart = (data) => {
-            setCart(data);
-            toast.success("Successfully added");
-        };
+    const handleAddToCart = (data) => {
+        setCart(data);
+        toast.success("Successfully added");
+    };
 
-        const { refetch } = GetCart();
+    const { refetch } = GetCart();
 
     return (
         <Wrapper className={"my-10 space-y-14"}>
@@ -102,7 +102,7 @@ const ProductDetails = ({ params: { id } }) => {
                                 bgColor={"bg-black"}
                                 textColor={"text-white"}
                                 className={
-                                    "w-full flex justify-center border-2 border-black items-center gap-x-2 rounded-t-none mb-5 text-xl"
+                                    "w-full flex justify-center border-2 border-black items-center gap-x-2 mb-5 text-xl"
                                 }
                             >
                                 <span>
@@ -114,7 +114,7 @@ const ProductDetails = ({ params: { id } }) => {
                             {/* WISHLIST BUTTON START */}
                             <Button
                                 className={
-                                    "w-full flex justify-center border-2 border-black items-center gap-x-2 rounded-t-none text-xl"
+                                    "w-full flex justify-center border-2 border-black items-center gap-x-2 text-xl"
                                 }
                             >
                                 <span>
