@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { AiOutlineStar } from "react-icons/ai";
@@ -12,12 +12,17 @@ import GetCart from "../helpers/getCart";
 import { toast } from "react-hot-toast";
 
 const Card = ({ id, image, title, price, rating, item }) => {
+    const [isExists, setIsExists] = useState(false);
+    const { data: storedData, refetch } = GetCart();
     const handleAddToCart = (data) => {
-        setCart(data);
-        toast.success("Successfully added");
+        const alreadyExists = storedData?.find((e) => e.id === data.id);
+        if (!alreadyExists) {
+            setIsExists(false);
+            setCart(data);
+            toast.success("Successfully added");
+        }
+        setIsExists(true);
     };
-
-    const { refetch } = GetCart();
 
     return (
         <div className="shadow-xl group rounded-md duration-300 border cursor-pointer">
@@ -59,19 +64,25 @@ const Card = ({ id, image, title, price, rating, item }) => {
                     </div>
                 </Link>
                 <Button
+                    disabled={isExists}
                     onClick={() => {
                         handleAddToCart(item), refetch();
                     }}
                     textColor={"text-black"}
                     bgColor={"bg-[#F5F5F5]"}
                     className={
-                        "w-full border-t flex justify-center items-center gap-x-2 rounded-t-none hover:bg-black hover:text-white"
+                        "w-full border-t flex justify-center items-center gap-x-2 rounded-t-none hover:bg-black disabled:bg-[#F5F5F5] disabled:text-black hover:text-white"
                     }
                 >
-                    <span>
-                        <BsFillCartCheckFill className="text-2xl" />
-                    </span>
-                    Add to cart
+                    {isExists ? (
+                        ""
+                    ) : (
+                        <span>
+                            <BsFillCartCheckFill className="text-2xl" />
+                        </span>
+                    )}
+
+                    {isExists ? "already added" : "Add to cart"}
                 </Button>
             </div>
         </div>

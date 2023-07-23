@@ -63,7 +63,7 @@ const Cart = () => {
                             />
                         ))}
                     </div>
-                    <div className="lg:w-4/12 w-full bg-[#F3F3F3] lg:h-[calc(100vh-5rem)]">
+                    <div className="lg:w-4/12 w-full bg-[#F3F3F3] lg:h-[calc(100vh-5rem)] sticky top-[5rem]">
                         <div className="flex flex-col p-10  justify-between lg:h-[calc(100vh-5rem)]">
                             <div className="font-semibold">
                                 <p className="text-3xl md:text-4xl font-bold text-center text-neutral underline underline-offset-[12px]">

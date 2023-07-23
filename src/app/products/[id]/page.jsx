@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { getSingleProduct } from "@/lib/api";
 import Wrapper from "@/lib/components/Wrapper";
 import Button from "@/lib/components/Button";
@@ -21,13 +21,17 @@ const ProductDetails = ({ params: { id } }) => {
         queryKey: [`product/${id}`],
         queryFn: () => getSingleProduct(id),
     });
-
+    const [isExists, setIsExists] = useState(false);
+    const { data: storedData, refetch } = GetCart();
     const handleAddToCart = (data) => {
-        setCart(data);
-        toast.success("Successfully added");
+        const alreadyExists = storedData?.find((e) => e.id === data.id);
+        if (!alreadyExists) {
+            setIsExists(false);
+            setCart(data);
+            toast.success("Successfully added");
+        }
+        setIsExists(true);
     };
-
-    const { refetch } = GetCart();
 
     return (
         <Wrapper className={"my-10 space-y-14"}>
@@ -96,19 +100,25 @@ const ProductDetails = ({ params: { id } }) => {
                                 {data?.description}
                             </p>
                             <Button
+                                disabled={isExists}
                                 onClick={() => {
                                     handleAddToCart(data), refetch();
                                 }}
                                 bgColor={"bg-black"}
                                 textColor={"text-white"}
                                 className={
-                                    "w-full flex justify-center border-2 border-black items-center gap-x-2 mb-5 text-xl"
+                                    "w-full flex justify-center border-2 border-black items-center gap-x-2 mb-5 text-xl disabled:bg-[#F5F5F5] disabled:text-black "
                                 }
                             >
-                                <span>
-                                    <BsFillCartCheckFill className="text-2xl" />
-                                </span>
-                                Add to cart
+                                {isExists ? (
+                                    ""
+                                ) : (
+                                    <span>
+                                        <BsFillCartCheckFill className="text-2xl" />
+                                    </span>
+                                )}
+
+                                {isExists ? "already added" : "Add to cart"}
                             </Button>
 
                             {/* WISHLIST BUTTON START */}

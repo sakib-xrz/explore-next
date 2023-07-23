@@ -108,7 +108,7 @@ const Navbar = () => {
                                 alt=""
                                 className="rounded-full cursor-pointer"
                             />
-                            <div class="hidden group-hover:block rounded-md absolute right-[-1rem] min-w-[130px] bg-white drop-shadow-lg">
+                            <div class="hidden z-50 group-hover:block rounded-md absolute right-[-1rem] min-w-[130px] bg-white drop-shadow-lg">
                                 <p
                                     class="px-5 py-3 border-b font-medium text-md rounded-t-md cursor-default hover:bg-[#F5F5F5]"
                                     href="#"

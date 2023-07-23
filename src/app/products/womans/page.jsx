@@ -74,6 +74,7 @@ const Womans = () => {
                     {sortedItems?.map((item) => (
                         <Card
                             key={item.id}
+                            item={item}
                             rating={item.rating}
                             title={item.title}
                             image={item.image}
