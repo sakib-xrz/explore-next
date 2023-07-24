@@ -12,8 +12,10 @@ import { toast } from "react-hot-toast";
 import Image from "next/image";
 import logo from "/public/logo.png";
 import user from "public/user.png";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+    const pathname = usePathname();
     const [showMenu, setShowMenu] = useState(false);
     const { data: currentUser, refetch } = GetUser();
     const { data } = GetCart();
@@ -38,7 +40,9 @@ const Navbar = () => {
                     {menus.map((menu, index) => (
                         <Link
                             href={menu.path}
-                            className={`hover:underline underline-offset-4 duration-300 font-medium text-xl`}
+                            className={`${
+                                pathname === menu.path ? "underline" : ""
+                            } hover:underline underline-offset-4 duration-300 font-medium text-xl`}
                             key={index}
                         >
                             {menu.route}
@@ -62,16 +66,16 @@ const Navbar = () => {
                                 alt=""
                                 className="rounded-full cursor-pointer"
                             />
-                            <div classsName="hidden group-hover:block rounded-md absolute right-[-1rem] min-w-[130px] bg-white drop-shadow-lg">
+                            <div className="hidden group-hover:block rounded-md absolute right-[-1rem] min-w-[130px] bg-white drop-shadow-lg">
                                 <p
-                                    classsName="px-5 py-3 border-b font-medium text-md rounded-t-md cursor-default hover:bg-[#F5F5F5]"
+                                    className="px-5 py-3 border-b font-medium text-md rounded-t-md cursor-default hover:bg-[#F5F5F5]"
                                     href="#"
                                 >
                                     {currentUser.name.split(" ")[0]}
                                 </p>
                                 <p
                                     onClick={() => handleLogout()}
-                                    classsName="px-5 py-3 font-medium text-md rounded-b-md cursor-pointer hover:bg-red-600 hover:text-white"
+                                    className="px-5 py-3 font-medium text-md rounded-b-md cursor-pointer hover:bg-red-600 hover:text-white"
                                     href="#"
                                 >
                                     Logout
@@ -107,16 +111,16 @@ const Navbar = () => {
                                 alt=""
                                 className="rounded-full cursor-pointer"
                             />
-                            <div classsName="hidden z-50 group-hover:block rounded-md absolute right-[-1rem] min-w-[130px] bg-white drop-shadow-lg">
+                            <div className="hidden z-50 group-hover:block rounded-md absolute right-[-1rem] min-w-[130px] bg-white drop-shadow-lg">
                                 <p
-                                    classsName="px-5 py-3 border-b font-medium text-md rounded-t-md cursor-default hover:bg-[#F5F5F5]"
+                                    className="px-5 py-3 border-b font-medium text-md rounded-t-md cursor-default hover:bg-[#F5F5F5]"
                                     href="#"
                                 >
                                     {currentUser.name.split(" ")[0]}
                                 </p>
                                 <p
                                     onClick={() => handleLogout()}
-                                    classsName="px-5 py-3 font-medium text-md rounded-b-md cursor-pointer hover:bg-red-600 hover:text-white"
+                                    className="px-5 py-3 font-medium text-md rounded-b-md cursor-pointer hover:bg-red-600 hover:text-white"
                                     href="#"
                                 >
                                     Logout
@@ -146,7 +150,11 @@ const Navbar = () => {
                             <p key={index} className="text-xl md:my-0 my-7">
                                 <Link
                                     href={menu.path}
-                                    className={`hover:underline underline-offset-4 font-medium duration-300`}
+                                    className={`${
+                                        pathname === menu.path
+                                            ? "underline"
+                                            : ""
+                                    } hover:underline underline-offset-4 font-medium duration-300`}
                                 >
                                     {menu.route}
                                 </Link>

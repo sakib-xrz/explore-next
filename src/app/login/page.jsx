@@ -36,7 +36,11 @@ const Login = () => {
                     actions.resetForm();
                     toast.success(result);
                     refetch();
-                    router.push("/");
+                    const intendedDestination = localStorage.getItem(
+                        "intendedDestination"
+                    );
+                    router.push(intendedDestination ?? "/");
+                    localStorage.removeItem("intendedDestination");
                 }
             },
         });

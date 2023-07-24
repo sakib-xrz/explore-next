@@ -1,6 +1,6 @@
 export const menus = [
-    { route: "Home", path: "/", active: "home" },
-    { route: "Products", path: "/products", active: "products" },
+    { route: "Home", path: "/" },
+    { route: "Products", path: "/products" },
 ];
 
 export const divisions = [
