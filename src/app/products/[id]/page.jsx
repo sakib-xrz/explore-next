@@ -21,16 +21,15 @@ const ProductDetails = ({ params: { id } }) => {
         queryKey: [`product/${id}`],
         queryFn: () => getSingleProduct(id),
     });
-    const [isExists, setIsExists] = useState(false);
     const { data: storedData, refetch } = GetCart();
+
+    const isAlreadyExists = !!storedData?.find((e) => e.id == id);
+
     const handleAddToCart = (data) => {
-        const alreadyExists = storedData?.find((e) => e.id === data.id);
-        if (!alreadyExists) {
-            setIsExists(false);
+        if (!isAlreadyExists) {
             setCart(data);
             toast.success("Successfully added");
         }
-        setIsExists(true);
     };
 
     return (
@@ -100,7 +99,7 @@ const ProductDetails = ({ params: { id } }) => {
                                 {data?.description}
                             </p>
                             <Button
-                                disabled={isExists}
+                                disabled={isAlreadyExists}
                                 onClick={() => {
                                     handleAddToCart(data), refetch();
                                 }}
@@ -110,15 +109,19 @@ const ProductDetails = ({ params: { id } }) => {
                                     "w-full flex justify-center border-2 border-black items-center gap-x-2 mb-5 text-xl disabled:bg-[#F5F5F5] disabled:text-black "
                                 }
                             >
-                                {isExists ? (
-                                    ""
+                                {isAlreadyExists ? (
+                                    <>
+                                        <>{""}</>
+                                        <span>already added</span>
+                                    </>
                                 ) : (
-                                    <span>
-                                        <BsFillCartCheckFill className="text-2xl" />
-                                    </span>
+                                    <>
+                                        <span>
+                                            <BsFillCartCheckFill className="text-2xl" />
+                                        </span>
+                                        <span>Add to cart</span>
+                                    </>
                                 )}
-
-                                {isExists ? "already added" : "Add to cart"}
                             </Button>
 
                             {/* WISHLIST BUTTON START */}

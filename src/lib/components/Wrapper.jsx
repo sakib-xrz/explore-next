@@ -3,7 +3,7 @@ const Wrapper = ({ children, className, maxWidth }) => {
         <div
             className={`w-full ${
                 maxWidth ?? "max-w-7xl"
-            } px-5 md:px-0 mx-auto ${className || ""}`}
+            } px-5 mx-auto ${className || ""}`}
         >
             {children}
         </div>

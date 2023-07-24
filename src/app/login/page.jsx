@@ -76,7 +76,7 @@ const Login = () => {
                                 errors.email && touched.email
                                     ? "border-red-600 focus:outline-red-600"
                                     : "border-black"
-                            } bg-white border  rounded-md px-11`}
+                            } bg-white border rounded-md px-11`}
                             placeholder="Email*"
                             name="email"
                             value={values.email}

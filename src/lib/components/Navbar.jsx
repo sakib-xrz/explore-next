@@ -13,7 +13,6 @@ import Image from "next/image";
 import logo from "/public/logo.png";
 import user from "public/user.png";
 
-
 const Navbar = () => {
     const [showMenu, setShowMenu] = useState(false);
     const { data: currentUser, refetch } = GetUser();
@@ -63,16 +62,16 @@ const Navbar = () => {
                                 alt=""
                                 className="rounded-full cursor-pointer"
                             />
-                            <div class="hidden group-hover:block rounded-md absolute right-[-1rem] min-w-[130px] bg-white drop-shadow-lg">
+                            <div classsName="hidden group-hover:block rounded-md absolute right-[-1rem] min-w-[130px] bg-white drop-shadow-lg">
                                 <p
-                                    class="px-5 py-3 border-b font-medium text-md rounded-t-md cursor-default hover:bg-[#F5F5F5]"
+                                    classsName="px-5 py-3 border-b font-medium text-md rounded-t-md cursor-default hover:bg-[#F5F5F5]"
                                     href="#"
                                 >
                                     {currentUser.name.split(" ")[0]}
                                 </p>
                                 <p
                                     onClick={() => handleLogout()}
-                                    class="px-5 py-3 font-medium text-md rounded-b-md cursor-pointer hover:bg-red-600 hover:text-white"
+                                    classsName="px-5 py-3 font-medium text-md rounded-b-md cursor-pointer hover:bg-red-600 hover:text-white"
                                     href="#"
                                 >
                                     Logout
@@ -108,16 +107,16 @@ const Navbar = () => {
                                 alt=""
                                 className="rounded-full cursor-pointer"
                             />
-                            <div class="hidden z-50 group-hover:block rounded-md absolute right-[-1rem] min-w-[130px] bg-white drop-shadow-lg">
+                            <div classsName="hidden z-50 group-hover:block rounded-md absolute right-[-1rem] min-w-[130px] bg-white drop-shadow-lg">
                                 <p
-                                    class="px-5 py-3 border-b font-medium text-md rounded-t-md cursor-default hover:bg-[#F5F5F5]"
+                                    classsName="px-5 py-3 border-b font-medium text-md rounded-t-md cursor-default hover:bg-[#F5F5F5]"
                                     href="#"
                                 >
                                     {currentUser.name.split(" ")[0]}
                                 </p>
                                 <p
                                     onClick={() => handleLogout()}
-                                    class="px-5 py-3 font-medium text-md rounded-b-md cursor-pointer hover:bg-red-600 hover:text-white"
+                                    classsName="px-5 py-3 font-medium text-md rounded-b-md cursor-pointer hover:bg-red-600 hover:text-white"
                                     href="#"
                                 >
                                     Logout

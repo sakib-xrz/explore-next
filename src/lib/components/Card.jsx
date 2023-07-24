@@ -12,16 +12,15 @@ import GetCart from "../helpers/getCart";
 import { toast } from "react-hot-toast";
 
 const Card = ({ id, image, title, price, rating, item }) => {
-    const [isExists, setIsExists] = useState(false);
     const { data: storedData, refetch } = GetCart();
+
+    const isAlreadyExists = !!storedData?.find((e) => e.id == id);
+
     const handleAddToCart = (data) => {
-        const alreadyExists = storedData?.find((e) => e.id === data.id);
-        if (!alreadyExists) {
-            setIsExists(false);
+        if (!isAlreadyExists) {
             setCart(data);
             toast.success("Successfully added");
         }
-        setIsExists(true);
     };
 
     return (
@@ -64,7 +63,7 @@ const Card = ({ id, image, title, price, rating, item }) => {
                     </div>
                 </Link>
                 <Button
-                    disabled={isExists}
+                    disabled={isAlreadyExists}
                     onClick={() => {
                         handleAddToCart(item), refetch();
                     }}
@@ -74,15 +73,20 @@ const Card = ({ id, image, title, price, rating, item }) => {
                         "w-full border-t flex justify-center items-center gap-x-2 rounded-t-none hover:bg-black disabled:bg-[#F5F5F5] disabled:text-black hover:text-white"
                     }
                 >
-                    {isExists ? (
-                        ""
+                    {isAlreadyExists ? (
+                        <>
+                            <>{""}</>
+                            <span>already added</span>
+                        </>
                     ) : (
-                        <span>
-                            <BsFillCartCheckFill className="text-2xl" />
-                        </span>
+                        <>
+                            <span>
+                                <BsFillCartCheckFill className="text-2xl" />
+                            </span>
+                            <span>Add to cart</span>
+                        </>
                     )}
 
-                    {isExists ? "already added" : "Add to cart"}
                 </Button>
             </div>
         </div>
