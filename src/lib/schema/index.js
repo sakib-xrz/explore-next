@@ -23,5 +23,5 @@ export const checkoutSchema = Yup.object({
         .required("Phone is required"),
     division: Yup.string().required("Division is required"),
     district: Yup.string().required("District is required"),
-    district: Yup.string().required("Address is required"),
+    address: Yup.string().required("Address is required"),
 });

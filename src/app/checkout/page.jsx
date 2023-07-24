@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { useFormik } from "formik";
-import * as Yup from "yup";
 import Button from "@/lib/components/Button";
 import Wrapper from "@/lib/components/Wrapper";
 import { districts, divisions } from "@/lib/enums/globals";
@@ -22,20 +21,21 @@ const initialValues = {
 };
 
 const Checkout = () => {
-    const { data } = GetCart();
+    const { data, refetch } = GetCart();
     const total = calculateTotal(data);
 
     const formik = useFormik({
         initialValues,
         validationSchema: checkoutSchema,
         onSubmit: (values, actions) => {
-            // Handle form submission here
             values.division = divisions.find(
                 (dev) => dev.id === values.division
             ).name;
             values.district = districts.find(
                 (dis) => dis.id === values.district
             ).name;
+            localStorage.removeItem("cart");
+            refetch()
             toast.success("Order Placed Successfully");
             console.log(values);
             actions.resetForm();
@@ -250,7 +250,7 @@ const Checkout = () => {
 
                                             <textarea
                                                 rows="3"
-                                                required={true}
+                                                required
                                                 type="text"
                                                 name="address"
                                                 className="block w-full py-3 text-neutral bg-white border border-black rounded-lg px-11"
@@ -291,7 +291,7 @@ const Checkout = () => {
                                             type="submit"
                                             bgColor="bg-black"
                                             textColor="text-white"
-                                            className="w-full md:text-xl my-5"
+                                            className="w-full md:text-xl my-5 disabled:bg-black/30"
                                             disabled={!formik.isValid}
                                         >
                                             PLACE ORDER
