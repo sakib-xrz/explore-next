@@ -11,6 +11,7 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { checkoutSchema } from "@/lib/schema";
 import { toast } from "react-hot-toast";
 import AuthGuard from "@/lib/components/AuthGuard";
+import { useRouter } from "next/navigation";
 
 const initialValues = {
     name: "",
@@ -21,6 +22,7 @@ const initialValues = {
 };
 
 const Checkout = () => {
+    const router = useRouter()
     const { data, refetch } = GetCart();
     const total = calculateTotal(data);
 
@@ -38,6 +40,7 @@ const Checkout = () => {
             refetch()
             toast.success("Order Placed Successfully");
             console.log(values);
+            router.push("/success")
             actions.resetForm();
         },
     });

@@ -1,9 +1,13 @@
-import Link from "next/link";
-import React from "react";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+    const pathname = usePathname();
     return (
-        <div className="container px-6 py-12 mx-auto">
+        <div
+            className={`${
+                pathname === "/success" && "hidden"
+            } container px-6 py-12 mx-auto`}
+        >
             <div className="md:flex md:-mx-3 md:items-center md:justify-between">
                 <h1 className="text-xl font-semibold tracking-tight text-black md:mx-3 xl:text-3xl">
                     Subscribe our newsletter to get update.

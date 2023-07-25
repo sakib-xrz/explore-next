@@ -28,7 +28,11 @@ const Navbar = () => {
 
     const cartQuantity = data?.length;
     return (
-        <div className=" text-black bg-white border-b sticky top-0 z-50">
+        <div
+            className={`${
+                pathname === "/success" && "hidden"
+            } text-black bg-white border-b sticky top-0 z-50`}
+        >
             <div className="container px-6 lg:py-12 mx-auto flex items-center justify-between h-20">
                 <Link href={"/"} className="hidden lg:block">
                     <Image src={logo} width={"200"} height={"40"} alt="" />
