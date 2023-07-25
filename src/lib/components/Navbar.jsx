@@ -149,6 +149,7 @@ const Navbar = () => {
                         {menus.map((menu, index) => (
                             <p key={index} className="text-xl md:my-0 my-7">
                                 <Link
+                                    onClick={() => setShowMenu(false)}
                                     href={menu.path}
                                     className={`${
                                         pathname === menu.path
