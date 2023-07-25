@@ -7,17 +7,17 @@ import React from "react";
 
 const NotFound = () => {
     return (
-        <div className="h-screen flex justify-center items-center bg-[#191919] -pt-20 px-5">
+        <div className="flex h-screen justify-center items-center bg-[#191919] px-5">
             <div>
                 <Image
                     height={500}
                     width={500}
                     src={error}
                     alt=""
-                    className="w-full h-auto"
+                    className="-mt-10"
                 />
 
-                <Link href={"/"} className="lg:-mt-24 flex justify-center">
+                <Link href={"/"} className="flex justify-center lg:-mt-20">
                     <Button
                         textColor={"text-white"}
                         bgColor={"bg-transparent"}
