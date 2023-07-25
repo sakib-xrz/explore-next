@@ -25,12 +25,13 @@ const Success = () => {
                       </p>
                       <p className="mb-4">
                           {" "}
-                          Your oder id: {" "}
+                          Your oder id:{" "}
                           <code className="font-bold">123456789</code>
                       </p>
                       <Link href={"/"}>
                           <Button
-                              className={"bg-green-600 text-white"}
+                              bgColor={"bg-green-600"}
+                              textColor={"text-white"}
                           >
                               Back to home
                           </Button>

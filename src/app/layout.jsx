@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
                 <Toaster position="top-center" reverseOrder={false} />
                 <QueryClientProvider client={queryClient}>
                     <Navbar />
-                    {children}
+                    <div className="min-h-screen">{children}</div>
                     <Footer />
                 </QueryClientProvider>
             </body>
