@@ -68,7 +68,7 @@ const Navbar = () => {
                                 height={30}
                                 width={30}
                                 alt=""
-                                className="rounded-full cursor-pointer"
+                                className="rounded-full cursor-pointer border-2"
                             />
                             <div className="hidden group-hover:block rounded-md absolute right-[-1rem] min-w-[130px] bg-white drop-shadow-lg">
                                 <p

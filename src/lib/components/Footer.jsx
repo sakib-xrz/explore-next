@@ -6,13 +6,8 @@ const Footer = () => {
         <div
             className={`${
                 pathname === "/success" && "hidden"
-            } container px-6 py-12 mx-auto`}
+            } container px-6 pb-12 mx-auto`}
         >
-            <div className="md:flex md:-mx-3 md:items-center md:justify-between">
-                <h1 className="text-xl font-semibold tracking-tight text-black md:mx-3 xl:text-3xl">
-                    Subscribe our newsletter to get update.
-                </h1>
-            </div>
 
             <hr className="my-6 border-gray-200 md:my-10" />
 

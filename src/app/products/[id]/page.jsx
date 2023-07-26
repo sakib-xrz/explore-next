@@ -69,23 +69,20 @@ const ProductDetails = ({ params: { id } }) => {
                                 {data?.category}{" "}
                             </div>
 
-                            <div className="text-3xl font-semibold leading-tight">
+                            <div className="text-3xl font-bold leading-tight">
                                 {data?.title}
                             </div>
                         </div>
 
                         <div>
-                            <div className="text-2xl font-bold">
-                                Product Details:
-                            </div>
                             <p className="text-lg text-justify">
                                 {data?.description}
                             </p>
                         </div>
 
                         <div className="flex gap-x-2 items-center">
-                            <div className="text-2xl font-bold">Rating:</div>
-                            <div className="flex items-start gap-x-1 mt-2">
+                            <div className="text-2xl font-medium">Rating:</div>
+                            <div className="flex items-center gap-x-1 mt-2">
                                 <Rating
                                     readonly
                                     initialRating={data?.rating?.rate}
@@ -97,15 +94,15 @@ const ProductDetails = ({ params: { id } }) => {
                                     }
                                     fractions={2}
                                 />
-                                <p className="text-xl font-medium">{`(${data?.rating?.count})`}</p>
+                                <p className="text-md pb-[8px]">{`(${data?.rating?.count})`}</p>
                             </div>
                         </div>
 
                         {/* PRODUCT PRICE */}
                         <div>
                             <div className="flex items-center">
-                                <p className="text-2xl font-bold">
-                                    Price : ${data?.price}
+                                <p className="text-2xl font-medium">
+                                    Price : <span className="font-bold">${data?.price}</span>
                                 </p>
                             </div>
 

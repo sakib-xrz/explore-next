@@ -55,8 +55,11 @@ const Login = () => {
                     className="w-full max-w-md"
                     autoComplete="none"
                 >
-                    <div className="relative flex items-center mt-8">
-                        <span className="absolute">
+                    <div className="relative mt-4">
+                        <label class="block mb-2 text-sm font-medium">
+                            Email
+                        </label>
+                        <span className="absolute top-1/2 mt-[2px]">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="w-6 h-6 mx-3 text-black/70 "
@@ -80,8 +83,8 @@ const Login = () => {
                                 errors.email && touched.email
                                     ? "border-red-600 focus:outline-red-600"
                                     : "border-black"
-                            } bg-white border rounded-md px-11`}
-                            placeholder="Email*"
+                            } bg-white border  rounded-md px-11`}
+                            placeholder="example@gmail.com"
                             name="email"
                             value={values.email}
                             onChange={handleChange}
@@ -94,8 +97,11 @@ const Login = () => {
                         </small>
                     ) : null}
 
-                    <div className="relative flex items-center mt-4">
-                        <span className="absolute">
+                    <div className="relative mt-4">
+                        <label class="block mb-2 text-sm font-medium">
+                            Password
+                        </label>
+                        <span className="absolute top-1/2 mt-[2px]">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="w-6 h-6 mx-3 text-black/70"
@@ -120,7 +126,7 @@ const Login = () => {
                                     ? "border-red-600 focus:outline-red-600"
                                     : "border-black"
                             } bg-white border  rounded-md px-11`}
-                            placeholder="Password*"
+                            placeholder="•••••••••••••"
                             name="password"
                             value={values.password}
                             onChange={handleChange}
@@ -135,7 +141,7 @@ const Login = () => {
                                         password: false,
                                     }))
                                 }
-                                className="absolute right-0"
+                                className="absolute right-0 bottom-[15px]"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -165,7 +171,7 @@ const Login = () => {
                                         password: true,
                                     }))
                                 }
-                                className="absolute right-0"
+                                className="absolute right-0 bottom-[15px]"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"

@@ -15,6 +15,7 @@ const initialValues = {
     email: "",
     password: "",
     confirm_password: "",
+    photo: null,
 };
 
 const SignUp = () => {
@@ -43,14 +44,15 @@ const SignUp = () => {
             if (result === "User already exists") {
                 toast.error(result);
             } else {
+                console.log(values);
                 actions.resetForm();
                 toast.success(result);
                 refetch();
                 const intendedDestination = localStorage.getItem(
-                        "intendedDestination"
-                    );
-                    router.push(intendedDestination ?? "/");
-                    localStorage.removeItem("intendedDestination");
+                    "intendedDestination"
+                );
+                router.push(intendedDestination ?? "/");
+                localStorage.removeItem("intendedDestination");
             }
         },
     });
@@ -86,7 +88,7 @@ const SignUp = () => {
                 >
                     <div className="relative ">
                         <label class="block mb-2 text-sm font-medium">
-                            Name*
+                            Name
                         </label>
                         <span className="absolute top-1/2 mt-[2px]">
                             <svg
@@ -112,7 +114,7 @@ const SignUp = () => {
                                     ? "border-red-600 focus:outline-red-600"
                                     : "border-black"
                             } bg-white border  rounded-md px-11`}
-                            placeholder="Name*"
+                            placeholder="John Doe"
                             name="name"
                             value={values.name}
                             onChange={handleChange}
@@ -127,7 +129,7 @@ const SignUp = () => {
 
                     <div className="relative mt-4">
                         <label class="block mb-2 text-sm font-medium">
-                            Email*
+                            Email
                         </label>
                         <span className="absolute top-1/2 mt-[2px]">
                             <svg
@@ -154,7 +156,7 @@ const SignUp = () => {
                                     ? "border-red-600 focus:outline-red-600"
                                     : "border-black"
                             } bg-white border  rounded-md px-11`}
-                            placeholder="Email*"
+                            placeholder="example@gmail.com"
                             name="email"
                             value={values.email}
                             onChange={handleChange}
@@ -169,7 +171,7 @@ const SignUp = () => {
 
                     <div className="relative mt-4">
                         <label class="block mb-2 text-sm font-medium">
-                            Password*
+                            Password
                         </label>
                         <span className="absolute top-1/2 mt-[2px]">
                             <svg
@@ -196,7 +198,7 @@ const SignUp = () => {
                                     ? "border-red-600 focus:outline-red-600"
                                     : "border-black"
                             } bg-white border  rounded-md px-11`}
-                            placeholder="Password*"
+                            placeholder="•••••••••••••"
                             name="password"
                             value={values.password}
                             onChange={handleChange}
@@ -268,7 +270,7 @@ const SignUp = () => {
 
                     <div className="relative mt-4">
                         <label class="block mb-2 text-sm font-medium">
-                            Confirm Password*
+                            Confirm Password
                         </label>
                         <span className="absolute top-1/2 mt-[2px]">
                             <svg
@@ -298,7 +300,7 @@ const SignUp = () => {
                                     ? "border-red-600 focus:outline-red-600"
                                     : "border-black"
                             } bg-white border  rounded-md px-11`}
-                            placeholder="Confirm Password*"
+                            placeholder="•••••••••••••"
                             name="confirm_password"
                             value={values.confirm_password}
                             onChange={handleChange}
@@ -369,7 +371,7 @@ const SignUp = () => {
 
                     <div className="relative mt-4">
                         <label class="block mb-2 text-sm font-medium">
-                            Choose profile photo
+                            Choose profile photo (optional)
                         </label>
 
                         <div className="border border-black rounded-md p-2">
@@ -381,21 +383,6 @@ const SignUp = () => {
                             />
                         </div>
                     </div>
-
-                    {/* <div className="flex border border-black rounded-md items-center mt-4 py-1">
-                        <span className="">Choose profile photo</span>
-                        <div className="shrink-0">
-                            
-                        </div>
-                        <label className="block">
-                            <input
-                                type="file"
-                                className="block w-full text-sm text-slate-500 file:mr-4 file:py-1 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-black/40 hover:file:cursor-pointer"
-                                name="photo"
-                                onChange={handleFileChange}
-                            />
-                        </label>
-                    </div> */}
 
                     <div className="mt-6">
                         <button

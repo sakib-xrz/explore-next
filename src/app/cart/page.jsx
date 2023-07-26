@@ -42,7 +42,7 @@ const Cart = () => {
             ) : (
                 <div className="lg:flex lg:gap-x-4">
                     <div className="lg:w-8/12 w-full md:py-12 py-8 bg-white">
-                        <div className="flex pb-10 justify-between items-center text-neutral">
+                        <div className="flex pb-10 justify-between items-end text-neutral">
                             <p className="text-3xl md:text-5xl font-bold leading-10">
                                 Shopping Cart
                             </p>
