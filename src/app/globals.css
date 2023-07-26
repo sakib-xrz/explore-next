@@ -13,26 +13,8 @@
     background-size: cover;
 }
 
-.swiper-button-next {
-  background-image: url("../../public/next.png");
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  background-position: center;
-}
-
-.swiper-button-next::after {
-  display: none;
-}
-
-.swiper-button-prev {
-  background-image: url("../../public/back.png");
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  background-position: center;
-}
-
-.swiper-button-prev::after {
-  display: none;
+.react-multiple-carousel__arrow{
+  z-index: 1 !important;
 }
 
 .dropdown:hover .dropdown-menu {

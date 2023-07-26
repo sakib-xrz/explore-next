@@ -2,22 +2,34 @@
 import React from "react";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import {
     getElectronics,
     getJewelry,
     getMenCloth,
     getWomenCloth,
 } from "@/lib/api";
-
 import Wrapper from "@/lib/components/Wrapper";
 import Title from "@/lib/components/Title";
 import Loader from "@/lib/components/Loader";
 import Card from "@/lib/components/Card";
 import Button from "@/lib/components/Button";
+
+const responsive = {
+    desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 3,
+    },
+    tablet: {
+        breakpoint: { max: 1023, min: 464 },
+        items: 2,
+    },
+    mobile: {
+        breakpoint: { max: 767, min: 0 },
+        items: 1,
+    },
+};
 
 export default function Home() {
     const { data: menCloths, isLoading: menClothsLoading } = useQuery({
@@ -68,34 +80,15 @@ export default function Home() {
                         <Loader />
                     ) : (
                         <div>
-                            <Swiper
-                                navigation={true}
-                                modules={[Navigation]}
-                                className="mySwiper"
-                                breakpoints={{
-                                    320: {
-                                        slidesPerView: 1,
-                                        spaceBetween: 20,
-                                    },
-                                    540: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 20,
-                                    },
-                                    768: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 40,
-                                    },
-                                    1024: {
-                                        slidesPerView: 3,
-                                        spaceBetween: 50,
-                                    },
-                                }}
+                            <Carousel
+                                responsive={responsive}
+                                containerClass="-mx-[10px]"
+                                itemClass="px-[10px]"
+                                infinite={true}
+                                autoPlay={true}
                             >
                                 {womenCloths?.map((cloth) => (
-                                    <SwiperSlide
-                                        key={cloth.id}
-                                        className="w-fit"
-                                    >
+                                    <div key={cloth.id}>
                                         <Card
                                             id={cloth.id}
                                             item={cloth}
@@ -104,9 +97,9 @@ export default function Home() {
                                             price={cloth?.price}
                                             image={cloth?.image}
                                         />
-                                    </SwiperSlide>
+                                    </div>
                                 ))}
-                            </Swiper>
+                            </Carousel>
                         </div>
                     )}
                 </div>
@@ -124,31 +117,15 @@ export default function Home() {
                         <Loader />
                     ) : (
                         <div>
-                            <Swiper
-                                navigation={true}
-                                modules={[Navigation]}
-                                className="mySwiper"
-                                breakpoints={{
-                                    320: {
-                                        slidesPerView: 1,
-                                        spaceBetween: 20,
-                                    },
-                                    540: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 20,
-                                    },
-                                    768: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 40,
-                                    },
-                                    1024: {
-                                        slidesPerView: 3,
-                                        spaceBetween: 50,
-                                    },
-                                }}
+                            <Carousel
+                                responsive={responsive}
+                                containerClass="-mx-[10px]"
+                                itemClass="px-[10px]"
+                                infinite={true}
+                                autoPlay={true}
                             >
                                 {menCloths?.map((cloth) => (
-                                    <SwiperSlide key={cloth.id}>
+                                    <div key={cloth.id}>
                                         <Card
                                             id={cloth.id}
                                             item={cloth}
@@ -157,9 +134,9 @@ export default function Home() {
                                             price={cloth?.price}
                                             image={cloth?.image}
                                         />
-                                    </SwiperSlide>
+                                    </div>
                                 ))}
-                            </Swiper>
+                            </Carousel>
                         </div>
                     )}
                 </div>
@@ -177,31 +154,15 @@ export default function Home() {
                         <Loader />
                     ) : (
                         <div>
-                            <Swiper
-                                navigation={true}
-                                modules={[Navigation]}
-                                className="mySwiper"
-                                breakpoints={{
-                                    320: {
-                                        slidesPerView: 1,
-                                        spaceBetween: 20,
-                                    },
-                                    540: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 20,
-                                    },
-                                    768: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 40,
-                                    },
-                                    1024: {
-                                        slidesPerView: 3,
-                                        spaceBetween: 50,
-                                    },
-                                }}
+                            <Carousel
+                                responsive={responsive}
+                                containerClass="-mx-[10px]"
+                                itemClass="px-[10px]"
+                                infinite={true}
+                                autoPlay={true}
                             >
                                 {jewelry?.map((item) => (
-                                    <SwiperSlide key={item.id}>
+                                    <div key={item.id}>
                                         <Card
                                             id={item.id}
                                             item={item}
@@ -210,9 +171,9 @@ export default function Home() {
                                             price={item?.price}
                                             image={item?.image}
                                         />
-                                    </SwiperSlide>
+                                    </div>
                                 ))}
-                            </Swiper>
+                            </Carousel>
                         </div>
                     )}
                 </div>
@@ -230,31 +191,15 @@ export default function Home() {
                         <Loader />
                     ) : (
                         <div>
-                            <Swiper
-                                navigation={true}
-                                modules={[Navigation]}
-                                className="mySwiper"
-                                breakpoints={{
-                                    320: {
-                                        slidesPerView: 1,
-                                        spaceBetween: 20,
-                                    },
-                                    540: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 20,
-                                    },
-                                    768: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 40,
-                                    },
-                                    1024: {
-                                        slidesPerView: 3,
-                                        spaceBetween: 50,
-                                    },
-                                }}
+                            <Carousel
+                                responsive={responsive}
+                                containerClass="-mx-[10px]"
+                                itemClass="px-[10px]"
+                                infinite={true}
+                                autoPlay={true}
                             >
                                 {electronics?.map((item) => (
-                                    <SwiperSlide key={item.id}>
+                                    <div key={item.id}>
                                         <Card
                                             id={item.id}
                                             item={item}
@@ -263,9 +208,9 @@ export default function Home() {
                                             price={item?.price}
                                             image={item?.image}
                                         />
-                                    </SwiperSlide>
+                                    </div>
                                 ))}
-                            </Swiper>
+                            </Carousel>
                         </div>
                     )}
                 </div>

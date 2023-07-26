@@ -24,7 +24,7 @@ const Card = ({ id, image, title, price, rating, item }) => {
     };
 
     return (
-        <div className="shadow-xl group rounded-md duration-300 border cursor-pointer">
+        <div className="group rounded-md duration-300 border cursor-pointer">
             <div>
                 <Link href={`/products/${id}`}>
                     <div className="flex justify-center h-[25rem]">
