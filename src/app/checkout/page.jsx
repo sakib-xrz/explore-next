@@ -61,7 +61,7 @@ const Checkout = () => {
 
     return (
         <AuthGuard>
-            <div className="space-y-14 lg:space-y-20  mt-28">
+            <div className="space-y-14 lg:space-y-20 my-10">
                 <Wrapper>
                     <p className="text-3xl md:text-5xl font-bold leading-10 text-center">
                         Checkout
@@ -103,7 +103,7 @@ const Checkout = () => {
                                                 type="text"
                                                 name="name"
                                                 className="block border-black w-full py-3 bg-transparent border rounded-lg px-11"
-                                                placeholder="Your name"
+                                                placeholder="John Doe"
                                                 {...formik.getFieldProps(
                                                     "name"
                                                 )}
@@ -146,7 +146,7 @@ const Checkout = () => {
                                                 type="tel"
                                                 name="phone"
                                                 className="block w-full py-3 border-black bg-white border rounded-lg px-11"
-                                                placeholder="Phone number"
+                                                placeholder="01xxxxxxxxx"
                                                 {...formik.getFieldProps(
                                                     "phone"
                                                 )}
@@ -257,7 +257,7 @@ const Checkout = () => {
                                                 type="text"
                                                 name="address"
                                                 className="block w-full py-3 text-neutral bg-white border border-black rounded-lg px-11"
-                                                placeholder="Billing address"
+                                                placeholder="House no. 17, Road no. 08, Block - J"
                                                 {...formik.getFieldProps(
                                                     "address"
                                                 )}
