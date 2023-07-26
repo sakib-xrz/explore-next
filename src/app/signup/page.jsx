@@ -69,14 +69,26 @@ const SignUp = () => {
             <h3 className="text-center text-4xl font-semibold uppercase">
                 Sign Up
             </h3>
+            <div className="flex justify-center mt-8">
+                <Image
+                    width={500}
+                    height={500}
+                    className="h-28 w-28 object-cover rounded-full p-1 border border-[#999999]"
+                    src={selectedImage}
+                    alt="Current profile photo"
+                />
+            </div>
             <div className="container flex justify-center px-6 mx-auto">
                 <form
                     onSubmit={handleSubmit}
                     className="w-full max-w-md"
                     autoComplete="off"
                 >
-                    <div className="relative flex items-center mt-8">
-                        <span className="absolute">
+                    <div className="relative ">
+                        <label class="block mb-2 text-sm font-medium">
+                            Name*
+                        </label>
+                        <span className="absolute top-1/2 mt-[2px]">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="w-6 h-6 mx-3 text-black/70"
@@ -113,8 +125,11 @@ const SignUp = () => {
                         </small>
                     ) : null}
 
-                    <div className="relative flex items-center mt-4">
-                        <span className="absolute">
+                    <div className="relative mt-4">
+                        <label class="block mb-2 text-sm font-medium">
+                            Email*
+                        </label>
+                        <span className="absolute top-1/2 mt-[2px]">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="w-6 h-6 mx-3 text-black/70 "
@@ -152,8 +167,11 @@ const SignUp = () => {
                         </small>
                     ) : null}
 
-                    <div className="relative flex items-center mt-4">
-                        <span className="absolute">
+                    <div className="relative mt-4">
+                        <label class="block mb-2 text-sm font-medium">
+                            Password*
+                        </label>
+                        <span className="absolute top-1/2 mt-[2px]">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="w-6 h-6 mx-3 text-black/70"
@@ -193,7 +211,7 @@ const SignUp = () => {
                                         password: false,
                                     }))
                                 }
-                                className="absolute right-0"
+                                className="absolute right-0 bottom-[15px]"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -223,7 +241,7 @@ const SignUp = () => {
                                         password: true,
                                     }))
                                 }
-                                className="absolute right-0"
+                                className="absolute right-0 bottom-[15px]"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -248,8 +266,11 @@ const SignUp = () => {
                         </small>
                     ) : null}
 
-                    <div className="relative flex items-center mt-4">
-                        <span className="absolute">
+                    <div className="relative mt-4">
+                        <label class="block mb-2 text-sm font-medium">
+                            Confirm Password*
+                        </label>
+                        <span className="absolute top-1/2 mt-[2px]">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="w-6 h-6 mx-3 text-black/70"
@@ -291,7 +312,7 @@ const SignUp = () => {
                                         confirm_password: false,
                                     }))
                                 }
-                                className="absolute right-0"
+                                className="absolute right-0 bottom-[15px]"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -321,7 +342,7 @@ const SignUp = () => {
                                         confirm_password: true,
                                     }))
                                 }
-                                className="absolute right-0"
+                                className="absolute right-0 bottom-[15px]"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -346,20 +367,27 @@ const SignUp = () => {
                         </small>
                     ) : null}
 
-                    <div className="flex border border-black items-center mt-4 py-1">
-                        <div className="shrink-0">
-                            <Image
-                                width={500}
-                                height={500}
-                                className="h-10 w-10 object-cover rounded-full mx-2"
-                                src={selectedImage}
-                                alt="Current profile photo"
+                    <div className="relative mt-4">
+                        <label class="block mb-2 text-sm font-medium">
+                            Choose profile photo
+                        </label>
+
+                        <div className="border border-black rounded-md p-2">
+                            <input
+                                type="file"
+                                className="block w-full cursor-pointer text-sm text-slate-500 file:mr-4 file:py-1 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-black/50 file:hover:bg-black/80 file:text-white file:px-2 hover:file:cursor-pointer"
+                                name="photo"
+                                onChange={handleFileChange}
                             />
                         </div>
+                    </div>
+
+                    {/* <div className="flex border border-black rounded-md items-center mt-4 py-1">
+                        <span className="">Choose profile photo</span>
+                        <div className="shrink-0">
+                            
+                        </div>
                         <label className="block">
-                            <span className="sr-only">
-                                Choose profile photo
-                            </span>
                             <input
                                 type="file"
                                 className="block w-full text-sm text-slate-500 file:mr-4 file:py-1 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-black/40 hover:file:cursor-pointer"
@@ -367,7 +395,7 @@ const SignUp = () => {
                                 onChange={handleFileChange}
                             />
                         </label>
-                    </div>
+                    </div> */}
 
                     <div className="mt-6">
                         <button

@@ -91,6 +91,7 @@ const Navbar = () => {
                             <Button
                                 bgColor={"bg-black"}
                                 textColor={"text-white"}
+                                className={"lg:py-2"}
                             >
                                 Login
                             </Button>

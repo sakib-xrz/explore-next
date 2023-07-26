@@ -1,12 +1,11 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
-import { getSingleProduct } from "@/lib/api";
+import React from "react";
+import { getProductByCategory, getSingleProduct } from "@/lib/api";
 import Wrapper from "@/lib/components/Wrapper";
 import Button from "@/lib/components/Button";
 import Loader from "@/lib/components/Loader";
 import { useQuery } from "@tanstack/react-query";
-import { AiFillHeart } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiTwotoneStar } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -15,12 +14,25 @@ import Rating from "react-rating";
 import GetCart from "@/lib/helpers/getCart";
 import setCart from "@/lib/helpers/setCart";
 import { toast } from "react-hot-toast";
+import Card from "@/lib/components/Card";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { responsive } from "@/lib/enums/globals";
+import Title from "@/lib/components/Title";
 
 const ProductDetails = ({ params: { id } }) => {
     const { data, isLoading } = useQuery({
         queryKey: [`product/${id}`],
         queryFn: () => getSingleProduct(id),
     });
+
+    const { data: categoryData, isLoading: categoryDataLoading } = useQuery({
+        queryKey: [`category/${data?.category}`],
+        queryFn: () => getProductByCategory(data?.category),
+    });
+
+    const similarProducts = categoryData?.filter(el => el.id != id)
+
     const { data: storedData, refetch } = GetCart();
 
     const isAlreadyExists = !!storedData?.find((e) => e.id == id);
@@ -33,7 +45,7 @@ const ProductDetails = ({ params: { id } }) => {
     };
 
     return (
-        <Wrapper className={"my-10 space-y-14"}>
+        <Wrapper className={"my-10 space-y-20"}>
             {isLoading ? (
                 <Loader />
             ) : (
@@ -50,20 +62,29 @@ const ProductDetails = ({ params: { id } }) => {
                     </div>
 
                     {/* right column  */}
-                    <div className="lg:w-8/12">
+                    <div className="lg:w-8/12 space-y-7">
                         {/* PRODUCT TITLE */}
-                        <div className="text-3xl font-semibold leading-tight">
-                            {data?.title}
-                        </div>
-
-                        <div className="text-lg font-medium mb-5 uppercase">
-                            {data?.category}{" "}
-                        </div>
-
-                        <div className="flex gap-x-2 items-center mb-5">
-                            <div className="text-2xl font-semibold">
-                                Rating:
+                        <div>
+                            <div className="text-md font-medium uppercase text-gray-500">
+                                {data?.category}{" "}
                             </div>
+
+                            <div className="text-3xl font-semibold leading-tight">
+                                {data?.title}
+                            </div>
+                        </div>
+
+                        <div>
+                            <div className="text-2xl font-bold">
+                                Product Details:
+                            </div>
+                            <p className="text-lg text-justify">
+                                {data?.description}
+                            </p>
+                        </div>
+
+                        <div className="flex gap-x-2 items-center">
+                            <div className="text-2xl font-bold">Rating:</div>
                             <div className="flex items-start gap-x-1 mt-2">
                                 <Rating
                                     readonly
@@ -81,61 +102,88 @@ const ProductDetails = ({ params: { id } }) => {
                         </div>
 
                         {/* PRODUCT PRICE */}
-                        <div className="flex items-center">
-                            <p className="mr-2 text-2xl font-semibold">
-                                Price : ${data?.price}
-                            </p>
-                        </div>
+                        <div>
+                            <div className="flex items-center">
+                                <p className="text-2xl font-bold">
+                                    Price : ${data?.price}
+                                </p>
+                            </div>
 
-                        <div className="text-md font-medium text-black/[0.5] mb-5">
-                            (incl. of taxes)
+                            <div className="text-md font-medium text-black/[0.5]">
+                                (incl. of taxes)
+                            </div>
                         </div>
 
                         <div className="mb-10">
-                            <div className="text-2xl font-bold">
-                                Product Details
-                            </div>
-                            <p className="text-lg text-justify mb-5">
-                                {data?.description}
-                            </p>
-                            <Button
-                                disabled={isAlreadyExists}
-                                onClick={() => {
-                                    handleAddToCart(data), refetch();
-                                }}
-                                bgColor={"bg-black"}
-                                textColor={"text-white"}
-                                className={
-                                    "w-full flex justify-center border-2 border-black items-center gap-x-2 mb-5 text-xl disabled:bg-[#F5F5F5] disabled:text-black "
-                                }
-                            >
-                                {isAlreadyExists ? (
-                                    <>
-                                        <>{""}</>
-                                        <span>already added</span>
-                                    </>
-                                ) : (
-                                    <>
-                                        <span>
-                                            <BsFillCartCheckFill className="text-2xl" />
-                                        </span>
-                                        <span>Add to cart</span>
-                                    </>
-                                )}
-                            </Button>
+                            <div className="lg:flex items-center gap-10">
+                                <Button
+                                    disabled={isAlreadyExists}
+                                    onClick={() => {
+                                        handleAddToCart(data), refetch();
+                                    }}
+                                    bgColor={"bg-black"}
+                                    textColor={"text-white"}
+                                    className={
+                                        "w-full flex justify-center border-2 border-black items-center gap-x-2 text-xl mb-5 lg:mb-0 disabled:bg-[#F5F5F5] disabled:text-black "
+                                    }
+                                >
+                                    {isAlreadyExists ? (
+                                        <>
+                                            <>{""}</>
+                                            <span>already added</span>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <span>
+                                                <BsFillCartCheckFill className="text-2xl" />
+                                            </span>
+                                            <span>Add to cart</span>
+                                        </>
+                                    )}
+                                </Button>
 
-                            {/* WISHLIST BUTTON START */}
-                            <Button
-                                className={
-                                    "w-full flex justify-center border-2 border-black items-center gap-x-2 text-xl"
-                                }
-                            >
-                                <span>
-                                    <AiOutlineHeart className="text-2xl" />
-                                </span>
-                                Add to Wishlist
-                            </Button>
+                                {/* WISHLIST BUTTON START */}
+                                <Button
+                                    className={
+                                        "w-full flex justify-center border-2 border-black items-center gap-x-2 text-xl"
+                                    }
+                                >
+                                    <span>
+                                        <AiOutlineHeart className="text-2xl" />
+                                    </span>
+                                    Add to Wishlist
+                                </Button>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            )}
+            {categoryDataLoading ? (
+                <div></div>
+            ) : (
+                <div>
+                    <Title border={true} title={"Similar products"} />
+                    <div>
+                        <Carousel
+                            responsive={responsive}
+                            containerClass="-mx-[10px]"
+                            itemClass="px-[10px]"
+                            infinite={true}
+                            autoPlay={true}
+                        >
+                            {similarProducts?.map((item) => (
+                                <div key={item.id}>
+                                    <Card
+                                        id={item.id}
+                                        item={item}
+                                        rating={item?.rating}
+                                        title={item?.title}
+                                        price={item?.price}
+                                        image={item?.image}
+                                    />
+                                </div>
+                            ))}
+                        </Carousel>
                     </div>
                 </div>
             )}
