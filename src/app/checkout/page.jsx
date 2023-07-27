@@ -24,7 +24,7 @@ const initialValues = {
 const Checkout = () => {
     const router = useRouter()
     const { data, refetch } = GetCart();
-    const total = calculateTotal(data);
+    const { subtotal, shipping, tax, total } = calculateTotal(data);
 
     const formik = useFormik({
         initialValues,
@@ -275,12 +275,38 @@ const Checkout = () => {
                             <div className="w-full lg:w-8/12 bg-[#F3F3F3] mt-10">
                                 <div className="flex flex-col p-10 justify-between">
                                     <div className="font-semibold">
-                                        <p className="text-3xl md:text-4xl font-bold text-center underline underline-offset-[12px]">
+                                        <p className="text-3xl md:text-4xl font-bold text-center underline underline-offset-[12px] mb-10">
                                             Order Summary
                                         </p>
+                                        <div>
+                                            <div className="flex items-center justify-between">
+                                                <p className="text-xl font-medium leading-none text-neutral">
+                                                    Subtotal
+                                                </p>
+                                                <p className="text-xl font-medium leading-none text-neutral">
+                                                    ${subtotal ?? 0}
+                                                </p>
+                                            </div>
+                                            <div className="flex items-center justify-between pt-5">
+                                                <p className="text-xl font-medium leading-none text-neutral">
+                                                    Shipping
+                                                </p>
+                                                <p className="text-xl font-medium leading-none text-neutral">
+                                                    ${shipping ?? 0}
+                                                </p>
+                                            </div>
+                                            <div className="flex items-center justify-between pt-5">
+                                                <p className="text-xl font-medium leading-none text-neutral">
+                                                    Tax
+                                                </p>
+                                                <p className="text-xl font-medium leading-none text-neutral">
+                                                    ${tax ?? 0}
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div className="mt-10 md:mt-60">
+                                    <div className="mt-10 md:mt-32">
                                         <hr className="h-[2px] bg-neutral" />
                                         <div className="flex items-center pb-6 justify-between ">
                                             <p className="text-2xl leading-normal">

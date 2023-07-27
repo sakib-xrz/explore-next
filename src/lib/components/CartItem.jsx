@@ -119,8 +119,8 @@ const CartItem = ({ item, refetch }) => {
                         </button>
                     </div>
                     <div className="flex gap-2">
-                        <p className="font-black text-neutral">Total:</p>
-                        <p className="font-black text-neutral">
+                        <p className="font-medium text-lg">Total:</p>
+                        <p className="font-medium text-lg">
                             ${totalPrice?.toFixed(2)}
                         </p>
                     </div>

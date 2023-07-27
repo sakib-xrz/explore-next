@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 
 const Cart = () => {
     const { data, refetch } = GetCart();
-    const total = calculateTotal(data);
+ const { subtotal, shipping, tax, total } = calculateTotal(data);
 
     const handleClear = () => {
         Swal.fire({
@@ -64,11 +64,37 @@ const Cart = () => {
                         ))}
                     </div>
                     <div className="lg:w-4/12 w-full bg-[#F3F3F3] lg:h-[calc(100vh-5rem)] sticky top-[5rem]">
-                        <div className="flex flex-col p-10  justify-between lg:h-[calc(100vh-5rem)]">
+                        <div className="flex flex-col p-10 justify-between lg:h-[calc(100vh-5rem)]">
                             <div className="font-semibold">
-                                <p className="text-3xl md:text-4xl font-bold text-center text-neutral underline underline-offset-[12px]">
+                                <p className="text-3xl md:text-4xl font-bold text-center text-neutral underline underline-offset-[12px] mb-10">
                                     Order Summary
                                 </p>
+                                <div>
+                                    <div className="flex items-center justify-between">
+                                        <p className="text-xl font-medium leading-none text-neutral">
+                                            Subtotal
+                                        </p>
+                                        <p className="text-xl font-medium leading-none text-neutral">
+                                            ${subtotal ?? 0}
+                                        </p>
+                                    </div>
+                                    <div className="flex items-center justify-between pt-5">
+                                        <p className="text-xl font-medium leading-none text-neutral">
+                                            Shipping
+                                        </p>
+                                        <p className="text-xl font-medium leading-none text-neutral">
+                                            ${shipping ?? 0}
+                                        </p>
+                                    </div>
+                                    <div className="flex items-center justify-between pt-5">
+                                        <p className="text-xl font-medium leading-none text-neutral">
+                                            Tax
+                                        </p>
+                                        <p className="text-xl font-medium leading-none text-neutral">
+                                            ${tax ?? 0}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
 
                             <div className="mt-10 md:mt-14 lg:mt-0">
@@ -78,7 +104,7 @@ const Cart = () => {
                                         Total
                                     </p>
                                     <p className="text-2xl font-bold leading-normal text-right text-neutral">
-                                        ${total.toFixed(2) ?? 0}
+                                        ${total ?? 0}
                                     </p>
                                 </div>
 

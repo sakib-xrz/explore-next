@@ -1,9 +1,22 @@
+import calculateTax from "./calculateTax";
+
 const calculateTotal = (data) => {
-    const total = data?.reduce((accumulator, currentValue) => {
+    const subtotal = data?.reduce((accumulator, currentValue) => {
         return accumulator + currentValue?.quantity * currentValue?.price;
     }, 0);
 
-    return total;
+    const shipping = subtotal < 1 ? 0 : 5;
+
+    const tax = calculateTax(subtotal);
+
+    const total = (subtotal + shipping + tax)?.toFixed(2);
+
+    return {
+        subtotal: subtotal,
+        shipping: shipping,
+        tax: tax,
+        total: total,
+    };
 };
 
 export default calculateTotal;

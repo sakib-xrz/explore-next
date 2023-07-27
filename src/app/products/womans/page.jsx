@@ -9,10 +9,12 @@ import React, { useState } from "react";
 
 const Womans = () => {
     const [sortedProducts, setSortedProducts] = useState(null);
-    const { data: products, isLoading } = useQuery({
+    const { data: products, isLoading, isFetching } = useQuery({
         queryKey: ["home/womenCloths"],
         queryFn: getWomenCloth,
     });
+
+    console.log(isFetching);
 
     const sortByPriceLowToHigh = () => {
         if (products) {
