@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 
 const Cart = () => {
     const { data, refetch } = GetCart();
- const { subtotal, shipping, tax, total } = calculateTotal(data);
+    const { subtotal, shipping, tax, total } = calculateTotal(data);
 
     const handleClear = () => {
         Swal.fire({
@@ -75,7 +75,9 @@ const Cart = () => {
                                             Subtotal
                                         </p>
                                         <p className="text-xl font-medium leading-none text-neutral">
-                                            ${subtotal ?? 0}
+                                            $
+                                            {parseFloat(subtotal).toFixed(2) ??
+                                                0}
                                         </p>
                                     </div>
                                     <div className="flex items-center justify-between pt-5">
@@ -83,15 +85,20 @@ const Cart = () => {
                                             Shipping
                                         </p>
                                         <p className="text-xl font-medium leading-none text-neutral">
-                                            ${shipping ?? 0}
+                                            $
+                                            {parseFloat(shipping).toFixed(2) ??
+                                                0}
                                         </p>
                                     </div>
                                     <div className="flex items-center justify-between pt-5">
                                         <p className="text-xl font-medium leading-none text-neutral">
-                                            Tax
+                                            VAT{" "}
+                                            <span className="text-gray-700 font-normal">
+                                                (4%)
+                                            </span>
                                         </p>
                                         <p className="text-xl font-medium leading-none text-neutral">
-                                            ${tax ?? 0}
+                                            ${parseFloat(tax).toFixed(2) ?? 0}
                                         </p>
                                     </div>
                                 </div>
@@ -104,7 +111,7 @@ const Cart = () => {
                                         Total
                                     </p>
                                     <p className="text-2xl font-bold leading-normal text-right text-neutral">
-                                        ${total ?? 0}
+                                        ${parseFloat(total).toFixed(2) ?? 0}
                                     </p>
                                 </div>
 

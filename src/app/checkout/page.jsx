@@ -22,7 +22,7 @@ const initialValues = {
 };
 
 const Checkout = () => {
-    const router = useRouter()
+    const router = useRouter();
     const { data, refetch } = GetCart();
     const { subtotal, shipping, tax, total } = calculateTotal(data);
 
@@ -37,10 +37,10 @@ const Checkout = () => {
                 (dis) => dis.id === values.district
             ).name;
             localStorage.removeItem("cart");
-            refetch()
+            refetch();
             toast.success("Order Placed Successfully");
             console.log(values);
-            router.push("/success")
+            router.push("/success");
             actions.resetForm();
         },
     });
@@ -284,7 +284,10 @@ const Checkout = () => {
                                                     Subtotal
                                                 </p>
                                                 <p className="text-xl font-medium leading-none text-neutral">
-                                                    ${subtotal ?? 0}
+                                                    $
+                                                    {parseFloat(
+                                                        subtotal
+                                                    ).toFixed(2) ?? 0}
                                                 </p>
                                             </div>
                                             <div className="flex items-center justify-between pt-5">
@@ -292,7 +295,10 @@ const Checkout = () => {
                                                     Shipping
                                                 </p>
                                                 <p className="text-xl font-medium leading-none text-neutral">
-                                                    ${shipping ?? 0}
+                                                    $
+                                                    {parseFloat(
+                                                        shipping
+                                                    ).toFixed(2) ?? 0}
                                                 </p>
                                             </div>
                                             <div className="flex items-center justify-between pt-5">
@@ -300,7 +306,10 @@ const Checkout = () => {
                                                     Tax
                                                 </p>
                                                 <p className="text-xl font-medium leading-none text-neutral">
-                                                    ${tax ?? 0}
+                                                    $
+                                                    {parseFloat(tax).toFixed(
+                                                        2
+                                                    ) ?? 0}
                                                 </p>
                                             </div>
                                         </div>
@@ -313,7 +322,9 @@ const Checkout = () => {
                                                 Total
                                             </p>
                                             <p className="text-2xl font-bold leading-normal text-right">
-                                                ${total ?? 0}
+                                                $
+                                                {parseFloat(total).toFixed(2) ??
+                                                    0}
                                             </p>
                                         </div>
                                         <Button
