@@ -72,22 +72,6 @@ const Product = () => {
                     <ul className="flex items-center gap-2 text-sm font-medium">
                         <li
                             className="flex-1"
-                            onClick={() => setCategory("men's clothing")}
-                        >
-                            <p
-                                className={`text-gray relative flex items-center justify-center gap-2 ${
-                                    category === "men's clothing" &&
-                                    "bg-white shadow"
-                                } hover:bg-white rounded-lg cursor-pointer px-3 py-2 hover:text-gray-700`}
-                            >
-                                <span className="hidden md:block">
-                                    {"Men's Clothing"}
-                                </span>
-                                <span className="md:hidden">{"Men"}</span>
-                            </p>
-                        </li>
-                        <li
-                            className="flex-1"
                             onClick={() => setCategory("women's clothing")}
                         >
                             <p
@@ -100,6 +84,22 @@ const Product = () => {
                                     {"Women's Clothing"}
                                 </span>
                                 <span className="md:hidden">{"Women"}</span>
+                            </p>
+                        </li>
+                        <li
+                            className="flex-1"
+                            onClick={() => setCategory("men's clothing")}
+                        >
+                            <p
+                                className={`text-gray relative flex items-center justify-center gap-2 ${
+                                    category === "men's clothing" &&
+                                    "bg-white shadow"
+                                } hover:bg-white rounded-lg cursor-pointer px-3 py-2 hover:text-gray-700`}
+                            >
+                                <span className="hidden md:block">
+                                    {"Men's Clothing"}
+                                </span>
+                                <span className="md:hidden">{"Men"}</span>
                             </p>
                         </li>
                         <li
