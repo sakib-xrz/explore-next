@@ -35,10 +35,10 @@ const Navbar = () => {
         >
             <div className="container px-6 lg:py-12 mx-auto flex items-center justify-between h-20">
                 <Link href={"/"} className="hidden lg:block">
-                    <Image src={logo} width={"200"} height={"40"} alt="" />
+                    <Image src={logo} width={"200"} height={"40"} alt="" priority />
                 </Link>
                 <Link href={"/"} className="lg:hidden">
-                    <Image src={logo} width={"150"} height={"80"} alt="" />
+                    <Image src={logo} width={"150"} height={"80"} alt="" priority />
                 </Link>
                 <div className="hidden md:flex items-center gap-x-5">
                     {menus.map((menu, index) => (
@@ -69,6 +69,7 @@ const Navbar = () => {
                                 width={30}
                                 alt=""
                                 className="rounded-full cursor-pointer border-2"
+                                priority
                             />
                             <div className="hidden group-hover:block rounded-md absolute right-[-1rem] min-w-[130px] bg-white drop-shadow-lg">
                                 <p

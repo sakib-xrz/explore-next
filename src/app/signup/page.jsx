@@ -87,7 +87,7 @@ const SignUp = () => {
                     autoComplete="off"
                 >
                     <div className="relative ">
-                        <label class="block mb-2 text-sm font-medium">
+                        <label className="block mb-2 text-sm font-medium">
                             Name
                         </label>
                         <span className="absolute top-1/2 mt-[2px]">
@@ -128,7 +128,7 @@ const SignUp = () => {
                     ) : null}
 
                     <div className="relative mt-4">
-                        <label class="block mb-2 text-sm font-medium">
+                        <label className="block mb-2 text-sm font-medium">
                             Email
                         </label>
                         <span className="absolute top-1/2 mt-[2px]">
@@ -170,7 +170,7 @@ const SignUp = () => {
                     ) : null}
 
                     <div className="relative mt-4">
-                        <label class="block mb-2 text-sm font-medium">
+                        <label className="block mb-2 text-sm font-medium">
                             Password
                         </label>
                         <span className="absolute top-1/2 mt-[2px]">
@@ -269,7 +269,7 @@ const SignUp = () => {
                     ) : null}
 
                     <div className="relative mt-4">
-                        <label class="block mb-2 text-sm font-medium">
+                        <label className="block mb-2 text-sm font-medium">
                             Confirm Password
                         </label>
                         <span className="absolute top-1/2 mt-[2px]">
@@ -370,7 +370,7 @@ const SignUp = () => {
                     ) : null}
 
                     <div className="relative mt-4">
-                        <label class="block mb-2 text-sm font-medium">
+                        <label className="block mb-2 text-sm font-medium">
                             Choose profile photo (optional)
                         </label>
 

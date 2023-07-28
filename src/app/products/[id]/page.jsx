@@ -31,7 +31,7 @@ const ProductDetails = ({ params: { id } }) => {
         queryFn: () => getProductByCategory(data?.category),
     });
 
-    const similarProducts = categoryData?.filter(el => el.id != id)
+    const similarProducts = categoryData?.filter((el) => el.id != id);
 
     const { data: storedData, refetch } = GetCart();
 
@@ -102,7 +102,10 @@ const ProductDetails = ({ params: { id } }) => {
                         <div>
                             <div className="flex items-center">
                                 <p className="text-2xl font-medium">
-                                    Price : <span className="font-bold">${data?.price}</span>
+                                    Price :{" "}
+                                    <span className="font-bold">
+                                        ${data?.price}
+                                    </span>
                                 </p>
                             </div>
 
@@ -163,8 +166,8 @@ const ProductDetails = ({ params: { id } }) => {
                     <div>
                         <Carousel
                             responsive={responsive}
-                            containerClass="-mx-[10px]"
-                            itemClass="px-[10px]"
+                            containerclassName="-mx-[10px]"
+                            itemclassName="px-[10px]"
                             infinite={true}
                             autoPlay={true}
                         >

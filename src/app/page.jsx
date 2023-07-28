@@ -17,7 +17,6 @@ import Card from "@/lib/components/Card";
 import Button from "@/lib/components/Button";
 import { responsive } from "@/lib/enums/globals";
 
-
 export default function Home() {
     const { data: menCloths, isLoading: menClothsLoading } = useQuery({
         queryKey: ["home/menCloths"],
@@ -69,8 +68,8 @@ export default function Home() {
                         <div>
                             <Carousel
                                 responsive={responsive}
-                                containerClass="-mx-[10px]"
-                                itemClass="px-[10px]"
+                                containerclassName="-mx-[10px]"
+                                itemclassName="px-[10px]"
                                 infinite={true}
                                 autoPlay={true}
                             >
@@ -106,8 +105,8 @@ export default function Home() {
                         <div>
                             <Carousel
                                 responsive={responsive}
-                                containerClass="-mx-[10px]"
-                                itemClass="px-[10px]"
+                                containerclassName="-mx-[10px]"
+                                itemclassName="px-[10px]"
                                 infinite={true}
                                 autoPlay={true}
                             >
@@ -143,8 +142,8 @@ export default function Home() {
                         <div>
                             <Carousel
                                 responsive={responsive}
-                                containerClass="-mx-[10px]"
-                                itemClass="px-[10px]"
+                                containerclassName="-mx-[10px]"
+                                itemclassName="px-[10px]"
                                 infinite={true}
                                 autoPlay={true}
                             >
@@ -180,8 +179,8 @@ export default function Home() {
                         <div>
                             <Carousel
                                 responsive={responsive}
-                                containerClass="-mx-[10px]"
-                                itemClass="px-[10px]"
+                                containerclassName="-mx-[10px]"
+                                itemclassName="px-[10px]"
                                 infinite={true}
                                 autoPlay={true}
                             >
