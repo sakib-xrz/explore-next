@@ -166,8 +166,8 @@ const ProductDetails = ({ params: { id } }) => {
                     <div>
                         <Carousel
                             responsive={responsive}
-                            containerclassName="-mx-[10px]"
-                            itemclassName="px-[10px]"
+                            containerClass="-mx-[10px]"
+                            itemClass="px-[10px]"
                             infinite={true}
                             autoPlay={true}
                         >
