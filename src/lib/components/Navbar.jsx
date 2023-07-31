@@ -148,7 +148,7 @@ const Navbar = () => {
                 </div>
                 <div
                     className={`md:hidden md:pb-0 absolute bg-white text-black top-20 px-10 transition-all duration-500 h-screen ease-in w-full ${
-                        showMenu ? "left-20" : "left-[-678px]"
+                        showMenu ? "left-20" : "left-[-778px]"
                     } ${showMenu && " ml-[-5rem]"}`}
                 >
                     <div className="">

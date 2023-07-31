@@ -78,12 +78,14 @@ const Product = () => {
                                 className={`text-gray relative flex items-center justify-center gap-2 ${
                                     category === "women's clothing" &&
                                     "bg-white shadow"
-                                } hover:bg-white rounded-lg cursor-pointer px-3 py-2 hover:text-gray-700`}
+                                } hover:bg-white rounded-lg cursor-pointer p-2 hover:text-gray-700`}
                             >
                                 <span className="hidden md:block">
                                     {"Women's Clothing"}
                                 </span>
-                                <span className="md:hidden">{"Women"}</span>
+                                <span className="md:hidden text-xs">
+                                    {"Women"}
+                                </span>
                             </p>
                         </li>
                         <li
@@ -94,12 +96,14 @@ const Product = () => {
                                 className={`text-gray relative flex items-center justify-center gap-2 ${
                                     category === "men's clothing" &&
                                     "bg-white shadow"
-                                } hover:bg-white rounded-lg cursor-pointer px-3 py-2 hover:text-gray-700`}
+                                } hover:bg-white rounded-lg cursor-pointer p-2 hover:text-gray-700`}
                             >
                                 <span className="hidden md:block">
                                     {"Men's Clothing"}
                                 </span>
-                                <span className="md:hidden">{"Men"}</span>
+                                <span className="md:hidden text-xs">
+                                    {"Men"}
+                                </span>
                             </p>
                         </li>
                         <li
@@ -109,9 +113,14 @@ const Product = () => {
                             <p
                                 className={`text-gray relative flex items-center justify-center gap-2 ${
                                     category === "jewelery" && "bg-white shadow"
-                                } hover:bg-white rounded-lg cursor-pointer px-3 py-2 hover:text-gray-700`}
+                                } hover:bg-white rounded-lg cursor-pointer p-2 hover:text-gray-700`}
                             >
-                                {"Jewelry"}
+                                <span className="hidden md:block">
+                                    {"Jewelry"}
+                                </span>
+                                <span className="md:hidden text-xs">
+                                    {"Jewelry"}
+                                </span>
                             </p>
                         </li>
                         <li
@@ -122,9 +131,14 @@ const Product = () => {
                                 className={`text-gray relative flex items-center justify-center gap-2 ${
                                     category === "electronics" &&
                                     "bg-white shadow"
-                                } hover:bg-white rounded-lg cursor-pointer px-3 py-2 hover:text-gray-700`}
+                                } hover:bg-white rounded-lg cursor-pointer p-2 hover:text-gray-700`}
                             >
-                                {"Electronics"}
+                                <span className="hidden md:block">
+                                    {"Electronics"}
+                                </span>
+                                <span className="md:hidden text-xs">
+                                    {"Electronics"}
+                                </span>
                             </p>
                         </li>
                     </ul>
