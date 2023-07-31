@@ -32,7 +32,7 @@ const Electronics = () => {
 
     return (
         <Wrapper className={"my-10"}>
-            <div className="flex justify-between items-start">
+            <div className="flex justify-between items-center mb-5">
                 <Title border={false} title={"electronics"} />
                 <div>
                     <div className="dropdown inline-block relative">

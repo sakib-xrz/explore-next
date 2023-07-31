@@ -34,8 +34,13 @@ const Womans = () => {
 
     return (
         <Wrapper className={"my-10"}>
-            <div className="flex justify-between items-start">
-                <Title border={false} title={"Women's clothing"} />
+            <div className="flex justify-between items-center mb-5">
+                <span className="hidden md:block">
+                    <Title border={false} title={"Women's clothing"} />
+                </span>
+                <span className="md:hidden">
+                    <Title border={false} title={"Women's"} />
+                </span>
                 <div>
                     <div className="dropdown inline-block relative">
                         <button className="bg-white text-black border border-black font-semibold py-2 px-4 rounded-md inline-flex items-center">

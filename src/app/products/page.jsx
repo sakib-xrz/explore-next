@@ -9,8 +9,13 @@ import Card from "@/lib/components/Card";
 
 const Product = () => {
     const [searchQuery, setSearchQuery] = useState("");
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState([]);
     const [products, setProducts] = useState([]);
+
+    const isCategoryActive = (categoryName) => {
+        return category.includes(categoryName);
+    };
+
 
     const { data: allProducts, isLoading } = useQuery({
         queryKey: ["product/getAllProduct"],
@@ -19,11 +24,12 @@ const Product = () => {
 
     useEffect(() => {
         const filteredProducts = allProducts?.filter((item) => {
-            const isInCategory = category ? item.category === category : true;
+            const isInSelectedCategories =
+                category.length === 0 || category.includes(item.category);
             const includesSearch = item.title
                 .toLowerCase()
                 .includes(searchQuery.toLowerCase());
-            return isInCategory && includesSearch;
+            return isInSelectedCategories && includesSearch;
         });
         setProducts(filteredProducts || []);
     }, [allProducts, category, searchQuery]);
@@ -33,11 +39,28 @@ const Product = () => {
         setSearchQuery(value);
     };
 
+    const handleCategoryToggle = (selectedCategory) => {
+        setCategory((prevCategories) => {
+            if (prevCategories.includes(selectedCategory)) {
+                return prevCategories.filter(
+                    (category) => category !== selectedCategory
+                );
+            } else {
+                return [...prevCategories, selectedCategory];
+            }
+        });
+    };
+
     return (
         <Wrapper className={"my-10 space-y-14"}>
             <div>
-                <div className="md:flex items-start justify-between">
-                    <Title border={false} title={"All Products"} />
+                <div className="md:flex items-start justify-between lg:mb-5">
+                    <div className="mb-5 lg:mb-0">
+                        <Title
+                            border={false}
+                            title={`All Products: ${products?.length ?? "0"}`}
+                        />
+                    </div>
                     <form className="mb-5 md:mb-0">
                         <div className="relative text-gray-600 focus-within:text-gray-400">
                             <span className="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -72,11 +95,13 @@ const Product = () => {
                     <ul className="flex items-center gap-2 text-sm font-medium">
                         <li
                             className="flex-1"
-                            onClick={() => setCategory("women's clothing")}
+                            onClick={() =>
+                                handleCategoryToggle("women's clothing")
+                            }
                         >
                             <p
                                 className={`text-gray relative flex items-center justify-center gap-2 ${
-                                    category === "women's clothing" &&
+                                    isCategoryActive("women's clothing") &&
                                     "bg-white shadow"
                                 } hover:bg-white rounded-lg cursor-pointer p-2 hover:text-gray-700`}
                             >
@@ -90,11 +115,13 @@ const Product = () => {
                         </li>
                         <li
                             className="flex-1"
-                            onClick={() => setCategory("men's clothing")}
+                            onClick={() =>
+                                handleCategoryToggle("men's clothing")
+                            }
                         >
                             <p
                                 className={`text-gray relative flex items-center justify-center gap-2 ${
-                                    category === "men's clothing" &&
+                                    isCategoryActive("men's clothing") &&
                                     "bg-white shadow"
                                 } hover:bg-white rounded-lg cursor-pointer p-2 hover:text-gray-700`}
                             >
@@ -108,11 +135,12 @@ const Product = () => {
                         </li>
                         <li
                             className="flex-1"
-                            onClick={() => setCategory("jewelery")}
+                            onClick={() => handleCategoryToggle("jewelery")}
                         >
                             <p
                                 className={`text-gray relative flex items-center justify-center gap-2 ${
-                                    category === "jewelery" && "bg-white shadow"
+                                    isCategoryActive("jewelery") &&
+                                    "bg-white shadow"
                                 } hover:bg-white rounded-lg cursor-pointer p-2 hover:text-gray-700`}
                             >
                                 <span className="hidden md:block">
@@ -125,11 +153,11 @@ const Product = () => {
                         </li>
                         <li
                             className="flex-1"
-                            onClick={() => setCategory("electronics")}
+                            onClick={() => handleCategoryToggle("electronics")}
                         >
                             <p
                                 className={`text-gray relative flex items-center justify-center gap-2 ${
-                                    category === "electronics" &&
+                                    isCategoryActive("electronics") &&
                                     "bg-white shadow"
                                 } hover:bg-white rounded-lg cursor-pointer p-2 hover:text-gray-700`}
                             >

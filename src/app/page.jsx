@@ -54,7 +54,7 @@ export default function Home() {
 
             <Wrapper className={"space-y-14"}>
                 <div>
-                    <div className="flex justify-between items-start">
+                    <div className="flex justify-between items-center mb-5 lg:mb-10">
                         <Title border={false} title={"Women's clothing"} />
                         <Link href={"/products/womans"}>
                             <button className="px-2 py-1 rounded-sm font-medium border border-black mt-1 lg:mt-3">
@@ -91,7 +91,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                    <div className="flex justify-between items-start">
+                    <div className="flex justify-between items-center mb-5 lg:mb-10">
                         <Title border={false} title={"Men's clothing"} />
                         <Link href={"/products/mens"}>
                             <button className="px-2 py-1 rounded-sm font-medium border border-black mt-1 lg:mt-3">
@@ -128,7 +128,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                    <div className="flex justify-between items-start">
+                    <div className="flex justify-between items-center mb-5 lg:mb-10">
                         <Title border={false} title={"jewelry"} />
                         <Link href={"/products/jewelry"}>
                             <button className="px-2 py-1 rounded-sm font-medium border border-black mt-1 lg:mt-3">
@@ -165,7 +165,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                    <div className="flex justify-between items-start">
+                    <div className="flex justify-between items-center mb-5 lg:mb-10">
                         <Title border={false} title={"electronics"} />
                         <Link href={"/products/electronics"}>
                             <button className="px-2 py-1 rounded-sm font-medium border border-black mt-1 lg:mt-3">
